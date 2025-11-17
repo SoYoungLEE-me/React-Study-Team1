@@ -75,9 +75,17 @@
 
 ## ✅ CSS 스타일 가이드 (CSS Modules)
 
-    **CSS Modules** 사용
+- **CSS Modules** 사용
 
 ### 사용 예시
+
+#### 1) 파일명 규칙
+
+```
+ComponentName.module.css
+```
+
+#### 2) import 방식
 
 ```jsx
 import styles from "./HomeCard.module.css";
