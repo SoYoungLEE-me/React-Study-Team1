@@ -149,6 +149,7 @@ html {
   line-height: 170%;
   font-family: var(--kor);
   word-break: keep-all;
+  background: var(--grayBg);
 }
 * {
   font-family: var(--kor);
