@@ -5,9 +5,6 @@ import MealSummary from "./component/MealSummary/MealSummary";
 import MealForm from "./component/MealFrom/MealForm";
 import { useMealStore } from "../../stores/useMealStore";
 
-// 스타일 초기화
-import "../MealRecord/index.css";
-
 const MealRecordPage = () => {
   // 주차 계산 함수
   const getWeekOfMonth = (date) => {
