@@ -1,0 +1,28 @@
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.cardSubtitle {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+.nutrientDetails p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.nutrientDetails strong {
+  color: #111;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.barSection {
+  margin-top: 1.5rem;
+}
