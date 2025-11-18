@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./MealRecordPage.module.css";
-import CalendarWeek from "./component/CalendarWeek/CalendarWeek";
-import MealSummary from "./component/MealSummary/MealSummary";
-import MealForm from "./component/MealFrom/MealForm";
+import CalendarWeek from "./components/CalendarWeek/CalendarWeek";
+import MealSummary from "./components/MealSummary/MealSummary";
+import MealForm from "./components/MealFrom/MealForm";
 import { useMealStore } from "../../stores/useMealStore";
 
 const MealRecordPage = () => {
