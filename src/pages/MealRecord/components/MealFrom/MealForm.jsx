@@ -3,6 +3,7 @@ import { useMealStore } from "../../../../stores/useMealStore";
 import styles from "./MealFrom.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 
 const MealForm = () => {
   const { selectedDate, editType, getMealsByDate, saveMeal, setEditType } = useMealStore();
@@ -50,6 +51,11 @@ const MealForm = () => {
 
   const deleteAll = () => {
     setItems([]);
+  };
+
+  const navigate = useNavigate();
+  const goToReport = () => {
+    navigate("/report");
   };
 
   if (!selectedDate) return null;
@@ -115,7 +121,7 @@ const MealForm = () => {
       <div className={styles.btn_wrap}>
         <button onClick={save}>저장하기</button>
         <button onClick={deleteAll}>전체 삭제</button>
-        <button>요약 보러 가기</button>
+        <button onClick={goToReport}>요약 보러 가기</button>
       </div>
     </div>
   );
