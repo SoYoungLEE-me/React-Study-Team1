@@ -1,0 +1,24 @@
+.barContainer {
+  margin-bottom: 1rem;
+}
+
+.barContainer span {
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.barBackground {
+  width: 100%;
+  background-color: #e9ecef;
+  border-radius: 20px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.barForeground {
+  height: 100%;
+  border-radius: 20px;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}

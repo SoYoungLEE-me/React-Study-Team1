@@ -5,6 +5,8 @@ import MainPage from "./pages/Main/MainPage";
 import MealRecordPage from "./pages/MealRecord/MealRecordPage";
 import MealReportPage from "./pages/MealReport/MealReportPage";
 import Login from "./pages/Login/Login";
+import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import TestApi from "./pages/TestApi";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/record" element={<MealRecordPage />} />
           <Route path="/report" element={<MealReportPage />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/test" element={<TestApi />} />
         </Route>
       </Routes>
     </div>
