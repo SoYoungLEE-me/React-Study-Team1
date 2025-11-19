@@ -19,9 +19,10 @@ const MealRecordPage = () => {
 
   const { selectedDate } = useMealStore();
 
-  const year = selectedDate?.getFullYear();
-  const month = selectedDate?.getMonth() + 1;
-  const day = selectedDate?.getDate();
+  const dateObj = selectedDate ? new Date(selectedDate) : null;
+  const year = dateObj?.getFullYear();
+  const month = dateObj?.getMonth() + 1;
+  const day = dateObj?.getDate();
   const week = selectedDate ? getWeekOfMonth(selectedDate) : 0;
 
   const weekNames = ["첫째주", "둘째주", "셋째주", "넷째주", "다섯째주"];
@@ -36,24 +37,32 @@ const MealRecordPage = () => {
         </div>
         <div className={styles.sec_inner}>
           <div className={styles.sec_calender}>
-            <h3 className={styles.sec_title}>식단 캘린더</h3>
+            <div className={styles.sec_title}>
+              <h3>식단 캘린더</h3>
+              <p>날짜별 점수/상태 표시</p>
+            </div>
             <div className={styles.calender}>
               <h4 className={styles.sub_title}>
                 {selectedDate && `${year}년 ${month}월 ${weekText}`}
               </h4>
               <div className={styles.calender_wrap}>
                 <CalendarWeek />
-                <MealSummary />
               </div>
             </div>
             <div className={styles.summary}>
               <h4 className={styles.sub_title}>
                 {selectedDate && `${month}월 ${day}일 식단 요약`}
               </h4>
-              <div className={styles.summary_wrap}></div>
+              <div className={styles.summary_wrap}>
+                <MealSummary />
+              </div>
             </div>
           </div>
           <div className={styles.sec_form}>
+            <div className={styles.sec_title}>
+              <h3>식단 추가 / 수정</h3>
+              <p>식사 타입, 시간, 음식명을 입력하고 저장합니다. </p>
+            </div>
             <MealForm />
           </div>
         </div>
