@@ -7,6 +7,7 @@ import MealReportPage from "./pages/MealReport/MealReportPage";
 import Login from "./pages/Login/Login";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import TestApi from "./pages/TestApi";
+import Join from "./pages/Join/Join";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/test" element={<TestApi />} />
+          <Route path="/join" element={<Join />} />
         </Route>
       </Routes>
     </div>
