@@ -16,7 +16,7 @@ const AiReport = ({ data, remainingCount = 3 }) => {
     setTimeout(() => {
       setIsLoading(false);
       setShowReport(true);
-    }, 1500); //api 호출 효과로 일부러 1.5초 딜레이 걸어뒀습니다. 나중에 삭제해도 돼요
+    }, 1500);
   };
 
   return (
