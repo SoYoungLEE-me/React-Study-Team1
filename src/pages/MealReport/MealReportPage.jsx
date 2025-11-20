@@ -1,55 +1,24 @@
 import React from "react";
-import styles from "./MealReport.module.css"; // CSS Module import
+import { useAiStore } from "../../stores/useAiStore";
 import NutritionSummary from "./components/NutritionSummary/NutritionSummary";
 import AiReport from "./components/AiReport/AiReport";
-
-// Mock 데이터
-const mockData = {
-  totalCalories: 1850,
-  protein: 72,
-  carbs: 230,
-  fat: 58,
-  goals: {
-    protein: 80,
-    carbs: 200,
-    fat: 70,
-  },
-  score: 82,
-  tags: ["단백질 충분", "섬유질 부족", "나트륨 과다"],
-  comment:
-    "오늘은 단백질과 채소 섭취는 비교적 좋지만, 국물 위주의 식사로 나트륨이 다소 높은 편이에요. 내일은 국물은 반만 드시고, 샐러드나 생채소를 함께 추가해 보는 걸 추천드려요.",
-};
+import styles from "./MealReport.module.css";
 
 const MealReportPage = () => {
-  const summaryData = {
-    totalCalories: mockData.totalCalories,
-    protein: mockData.protein,
-    carbs: mockData.carbs,
-    fat: mockData.fat,
-    goals: mockData.goals,
-  };
+  const { report } = useAiStore();
 
-  const reportData = {
-    score: mockData.score,
-    tags: mockData.tags,
-    comment: mockData.comment,
-  };
+  if (!report) return <div>식단 분석 결과가 없습니다.</div>;
 
   return (
     <div className={styles.analysisWrapper}>
       <div className={styles.analysisHeader}>
         <h2>오늘의 식단 리포트</h2>
-        <p>
-          오늘 섭취한 영양소를 분석하고, 더 건강한 식습관을 위한 AI 조언을
-          확인해 보세요.
-        </p>
+        <p>오늘 섭취한 영양소를 분석하고, AI의 맞춤 조언을 확인해보세요.</p>
       </div>
 
       <div className={styles.analysisContent}>
-        {/*섭취 영양 분석 */}
-        <NutritionSummary data={summaryData} />
-        {/*ai 평가 및 코멘트*/}
-        <AiReport data={reportData} />
+        <NutritionSummary data={report} />
+        <AiReport data={report} />
       </div>
     </div>
   );
