@@ -1,8 +1,9 @@
 import React from 'react'
 import styles from './SummaryToday.module.css'
 import StatusNutrients from '../statusNutrients/StatusNutrients'
+import { Link } from 'react-router-dom'
 
-const SummaryToday = ({data}) => {
+const SummaryToday = ({ data }) => {
   return (
     <div className={styles.summary_card}>
       <h2>오늘 요약</h2>
@@ -12,14 +13,14 @@ const SummaryToday = ({data}) => {
 
       <div className={styles.summary_content}>
         <div className={styles.score_circle}>
-        <div className={styles.circle}>
+          <div className={styles.circle}>
             <span>{data?.score}</span>
             <p>/ 100 점</p>
-        </div>
+          </div>
         </div>
 
         <div className={styles.summary_tags}>
-          {data?.nutrients?.map((item) => 
+          {data?.nutrients?.map((item) =>
             <StatusNutrients level={item.level} label={item.name}></StatusNutrients>
           )}
 
@@ -32,7 +33,9 @@ const SummaryToday = ({data}) => {
       </div>
 
       <div className={styles.summary_buttons}>
-        <button className={styles.btn_green}>식단 기록하기</button>
+        <Link to="/record">
+          <button className={styles.btn_green}>식단 기록하기</button>
+        </Link>
         <button className={styles.btn_outline}>오늘 기록 자세히 보기</button>
       </div>
     </div>
