@@ -1,0 +1,38 @@
+.recommend_box{
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.recommend_box h2{
+  margin-bottom: 25px;
+}
+
+.today_rec_box {
+  background: var(--white);
+  gap: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 30px;
+  padding: 30px 50px;
+}
+
+.today_rec {
+  margin-top: 5px;
+  color: #6b7280;
+}
+
+.recommend_list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* ========================================================= */
+/*                     📱 모바일 반응형                      */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  .recommend_box {
+    padding: 20px;
+  }
+}

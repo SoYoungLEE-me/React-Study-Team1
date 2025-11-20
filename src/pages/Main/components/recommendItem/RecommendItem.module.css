@@ -1,0 +1,37 @@
+.recommend_item h4 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.tags span {
+  background: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin: 6px;
+  font-size: 13px;
+  color: #475569;
+}
+
+.reviews span {
+  background: #a9d4ff;
+  padding: 6px 10px;
+  border-radius: 50px;
+  margin: 6px;
+  font-size: 13px;
+  color: #303945;
+}
+
+/* ========================================================= */
+/*                     📱 모바일 반응형                      */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  .recommend_item h4 {
+    font-size: 16px;
+  }
+
+  .tags span {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+}

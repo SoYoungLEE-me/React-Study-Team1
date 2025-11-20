@@ -1,0 +1,39 @@
+.meal_summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.meal_summary .meal_box {
+  width: 100%;
+  background: #f9fafb;
+  padding: 20px 26px;
+  box-sizing: border-box;
+  border-radius: var(--borderR20);
+
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.meal_summary .meal_box:hover {
+  background: var(--border);
+}
+.meal_summary .meal_box strong {
+  font-size: 0.889rem;
+  letter-spacing: -0.54px;
+}
+.meal_summary .meal_box > div * {
+  color: var(--black);
+  letter-spacing: -0.54px;
+  font-size: var(--sub-title);
+  font-weight: 400;
+
+  word-break: break-all;
+}
+.meal_summary .meal_box > div .time {
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  color: var(--blue);
+}
+@media all and (max-width: 1024px) {
+}
+@media all and (max-width: 768px) {
+}

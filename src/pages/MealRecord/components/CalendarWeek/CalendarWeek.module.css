@@ -1,0 +1,58 @@
+.day_list,
+.date_list {
+  display: flex;
+
+  gap: 10px;
+}
+.day_list > li,
+.date_list > li {
+  width: calc((100% - 60px) / 7);
+  text-align: center;
+}
+.date_list > li {
+  min-height: 90px;
+  border-radius: var(--borderR30);
+  border: 1px solid var(--border);
+
+  padding: 6px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.date_list > li > p {
+  font-size: var(--sec-title);
+  color: var(--black);
+  margin-bottom: auto;
+}
+.date_list > li:hover {
+  border-color: var(--main);
+}
+.date_list > li.active {
+  border-color: var(--border-active);
+  background: #e0f2fe;
+}
+.date_list > li > .score_circle {
+  background: var(--border);
+  width: 14px;
+  height: 14px;
+  border-radius: 100%;
+}
+.date_list > li > .score_circle.normal {
+  background: var(--yellow);
+}
+.date_list > li > .score_circle.high {
+  background: var(--main);
+}
+.date_list > li > .score_circle.low {
+  background: var(--red);
+}
+@media all and (max-width: 1024px) {
+}
+@media all and (max-width: 768px) {
+}
