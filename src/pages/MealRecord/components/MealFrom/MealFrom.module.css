@@ -1,0 +1,174 @@
+.meal_select {
+  display: flex;
+  gap: 20px;
+}
+.meal_select .select_wrap {
+  width: calc((100% - 20px) / 2);
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+}
+.small_title {
+  font-size: 0.889rem;
+  letter-spacing: -0.54px;
+  margin-bottom: 5px;
+}
+.meal_select .select_wrap select {
+  border-radius: 10px;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  font-size: var(--sub-title);
+
+  background: var(--grayBg);
+  border: 1px solid transparent;
+}
+.add_box {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.add_box .add_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.add_box .add_wrap input {
+  width: calc(100% - 10px - 120px);
+
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--grayBg);
+
+  font-size: var(--sub-title);
+  box-sizing: border-box;
+  padding: 10px;
+}
+.add_box .add_wrap button {
+  width: 110px;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: var(--main);
+  font-size: var(--sub-title);
+  color: var(--white);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.add_box .add_wrap button:hover {
+  background: var(--white);
+  color: var(--black);
+  border-color: var(--main);
+}
+.items_box {
+  margin-bottom: 40px;
+}
+.items_box .items_wrap {
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: Var(--grayBg);
+}
+.items_box .items_wrap > p {
+  color: var(--basic);
+  letter-spacing: -0.54px;
+  color: var(--blue);
+  margin-bottom: 5px;
+}
+.items_box .items_wrap p span {
+  color: var(--black);
+}
+.items_box .items_wrap .item_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.items_box .items_wrap .item_list li {
+  display: inline-flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  padding: 10px 16px;
+  box-sizing: border-box;
+  width: auto;
+
+  font-size: 1rem;
+  letter-spacing: -0.54px;
+  border-radius: var(--borderR30);
+  background: var(--blue);
+  color: var(--white);
+
+  max-width: 100%;
+}
+.items_box .items_wrap .item_list li p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+  width: 100%;
+}
+.items_box .items_wrap .item_list li button {
+  background: none;
+  color: var(--white);
+  border: none;
+
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+.items_box .items_wrap .item_list li button:hover {
+  transform: rotate(180deg);
+}
+.btn_wrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+.btn_wrap button {
+  max-width: 160px;
+  width: 100%;
+
+  font-size: var(--sub-title);
+
+  padding: 10px 16px;
+  box-sizing: border-box;
+
+  border-radius: var(--borderR30);
+  border: 1px solid var(--border);
+  background: Var(--white);
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn_wrap button:hover {
+  border-color: var(--red);
+}
+.btn_wrap button:first-of-type {
+  background: var(--main);
+  color: var(--white);
+}
+.btn_wrap button:first-of-type:hover {
+  background: var(--white);
+  color: var(--main);
+  border-color: var(--main);
+}
+
+.btn_wrap button:last-of-type {
+  margin-left: auto;
+}
+.btn_wrap button:last-of-type:hover {
+  color: var(--main);
+  border-color: var(--main);
+}
+
+@media all and (max-width: 1024px) {
+}
+@media all and (max-width: 768px) {
+}
