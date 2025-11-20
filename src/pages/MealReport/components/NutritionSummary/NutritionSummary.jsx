@@ -5,7 +5,7 @@ import NutrientBar from "../NutrientBar/NutrientBar";
 const NutritionSummary = ({ data }) => {
   return (
     <div className={styles.card}>
-      <h3>오늘의 영양 섭취</h3>
+      <h3>이번 식사에서 섭취한 영양소</h3>
       <p className={styles.cardSubtitle}>
         목표 섭취량 대비 달성률을 한눈에 확인해 보세요.
       </p>

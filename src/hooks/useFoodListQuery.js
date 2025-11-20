@@ -11,6 +11,7 @@ const fetchFoodList = async (keyword) => {
       food_Name: keyword,
       Page_Size: 20,
       page_No: 1,
+      service_Type: "json",
     },
   });
 

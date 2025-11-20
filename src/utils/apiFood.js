@@ -6,6 +6,5 @@ export const foodApi = axios.create({
   baseURL: "https://apis.data.go.kr/1390803/AgriFood",
   params: {
     serviceKey: API_KEY,
-    service_Type: "json",
   },
 });

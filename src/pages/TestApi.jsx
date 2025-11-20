@@ -1,11 +1,13 @@
-// src/components/TestApi.jsx
-import React, { useState, useEffect } from "react";
-import { useFoodListQuery } from "../hooks/useFoodListQuery"; // 작성하신 훅 경로
-import { useFoodStore } from "../stores/useFoodStore"; // 방금 만든 스토어 경로
+import React, { useState } from "react";
+import { useFoodListQuery } from "../hooks/useFoodListQuery";
+import { useFoodStore } from "../stores/useFoodStore";
+import { useNavigate } from "react-router-dom";
 
 const TestApi = () => {
   const [input, setInput] = useState("");
   const [keyword, setKeyword] = useState("");
+
+  const navigate = useNavigate();
 
   const {
     data: foodList,
@@ -14,25 +16,29 @@ const TestApi = () => {
     error,
   } = useFoodListQuery(keyword);
 
-  useEffect(() => {
-    if (foodList) {
-      console.log("[API 응답] 컴포넌트가 받은 데이터:", foodList);
-    }
-  }, [foodList]);
+  const { selectedFoods, toggleFood, calculateTotalNutrition } = useFoodStore();
 
-  const { selectedFoods, addFood, removeFood } = useFoodStore();
+  // 각 음식의 gram 저장
+  const [gramMap, setGramMap] = useState({});
 
   const handleSearch = () => {
     if (!input.trim()) return;
     setKeyword(input);
   };
 
+  const handleGramChange = (code, value) => {
+    setGramMap((prev) => ({
+      ...prev,
+      [code]: Number(value),
+    }));
+  };
+
   const isSelected = (food) =>
     selectedFoods.some((item) => item.code === food.code);
 
   return (
-    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>API 연결 테스트</h2>
+    <div style={{ padding: "20px", maxWidth: "700px", margin: "0 auto" }}>
+      <h2>음식 검색</h2>
 
       <div style={{ display: "flex", gap: "10px", marginBottom: "20px" }}>
         <input
@@ -40,7 +46,7 @@ const TestApi = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-          placeholder="예: 김치찌개"
+          placeholder="음식 이름 입력"
           style={{ flex: 1, padding: "10px" }}
         />
         <button onClick={handleSearch} style={{ padding: "10px 20px" }}>
@@ -48,14 +54,13 @@ const TestApi = () => {
         </button>
       </div>
 
-      {isLoading && <p>로딩 중... ⏳</p>}
-      {isError && <p style={{ color: "red" }}>에러 발생: {error.message}</p>}
+      {isLoading && <p>로딩 중...</p>}
+      {isError && <p>에러 발생: {error.message}</p>}
 
-      {/* 결과 리스트 영역 */}
       <div style={{ display: "flex", gap: "20px" }}>
-        {/* 왼쪽: 검색 결과 목록 */}
+        {/* 왼쪽: 검색 결과 */}
         <div style={{ flex: 1 }}>
-          <h3>검색 결과 ({foodList ? foodList.length : 0}개)</h3>
+          <h3>검색 결과 ({foodList?.length || 0})</h3>
           <ul
             style={{
               listStyle: "none",
@@ -68,22 +73,22 @@ const TestApi = () => {
             {foodList?.map((food) => (
               <li
                 key={food.code}
-                onClick={() => addFood(food)}
+                onClick={() => toggleFood(food)}
                 style={{
                   padding: "10px",
                   borderBottom: "1px solid #eee",
                   cursor: "pointer",
-                  background: isSelected(food) === food ? "#e3f2fd" : "white",
+                  background: isSelected(food) ? "#e3f2fd" : "white",
                 }}
               >
                 <strong>{food.name}</strong>
-                {isSelected(food) && <span style={{ color: "blue" }}>✔</span>}
+                {isSelected(food) && <span> ✔</span>}
               </li>
             ))}
           </ul>
         </div>
 
-        {/* 오른쪽: 선택된 음식 확인 */}
+        {/* 오른쪽: gram 입력 */}
         <div
           style={{
             flex: 1,
@@ -92,45 +97,76 @@ const TestApi = () => {
             background: "#f9f9f9",
           }}
         >
-          <h3>선택된 데이터 확인</h3>
+          <h3>선택된 음식 + 그램 입력</h3>
+
           {selectedFoods.length === 0 ? (
-            <p style={{ color: "#888" }}>왼쪽에서 음식을 선택해서 담으세요.</p>
+            <p>음식을 선택해주세요.</p>
           ) : (
             <ul style={{ listStyle: "none", padding: 0 }}>
               {selectedFoods.map((food) => (
                 <li
                   key={food.code}
                   style={{
-                    padding: "8px",
-                    borderBottom: "1px solid #ccc",
+                    padding: "10px",
                     background: "white",
-                    marginBottom: "5px",
-                    borderRadius: "4px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
+                    marginBottom: "10px",
+                    borderRadius: "6px",
                   }}
                 >
-                  <span>{food.name}</span>
-                  {/* 삭제 버튼 */}
-                  <button
-                    onClick={() => removeFood(food.code)}
+                  <div
                     style={{
-                      background: "#ff5252",
-                      color: "white",
-                      border: "none",
-                      borderRadius: "4px",
-                      cursor: "pointer",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
                     }}
                   >
-                    삭제
-                  </button>
+                    <span>{food.name}</span>
+
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <input
+                        type="number"
+                        placeholder="그램"
+                        value={gramMap[food.code] || ""}
+                        onChange={(e) =>
+                          handleGramChange(food.code, e.target.value)
+                        }
+                        style={{
+                          width: "70px",
+                          padding: "5px",
+                          marginRight: "6px",
+                        }}
+                      />
+                      g
+                    </div>
+                  </div>
                 </li>
               ))}
             </ul>
           )}
         </div>
       </div>
+
+      {/* 영양 분석 버튼 */}
+      {selectedFoods.length > 0 && (
+        <button
+          onClick={async () => {
+            await calculateTotalNutrition(gramMap);
+            navigate("/report");
+          }}
+          style={{
+            marginTop: "20px",
+            padding: "12px 20px",
+            background: "#4caf50",
+            color: "white",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer",
+            fontSize: "16px",
+          }}
+        >
+          영양분석 하러가기 →
+        </button>
+      )}
     </div>
   );
 };

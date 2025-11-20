@@ -1,54 +1,60 @@
 import React from "react";
-import styles from "./MealReport.module.css"; // CSS Module import
+import styles from "./MealReport.module.css";
 import NutritionSummary from "./components/NutritionSummary/NutritionSummary";
 import AiReport from "./components/AiReport/AiReport";
-
-// Mock 데이터
-const mockData = {
-  totalCalories: 1850,
-  protein: 72,
-  carbs: 230,
-  fat: 58,
-  goals: {
-    protein: 80,
-    carbs: 200,
-    fat: 70,
-  },
-  score: 82,
-  tags: ["단백질 충분", "섬유질 부족", "나트륨 과다"],
-  comment:
-    "오늘은 단백질과 채소 섭취는 비교적 좋지만, 국물 위주의 식사로 나트륨이 다소 높은 편이에요. 내일은 국물은 반만 드시고, 샐러드나 생채소를 함께 추가해 보는 걸 추천드려요.",
-};
+import { useFoodStore } from "../../stores/useFoodStore";
 
 const MealReportPage = () => {
+  const { totalNutrition } = useFoodStore();
+
+  // totalNutrition이 아직 없으면 안내
+  if (!totalNutrition) {
+    return (
+      <div className={styles.analysisWrapper}>
+        <h2>분석 데이터가 없습니다.</h2>
+        <p>식단을 선택하고 영양 분석을 먼저 진행해주세요.</p>
+      </div>
+    );
+  }
+
+  // NutritionSummary에 넘길 요약 데이터
   const summaryData = {
-    totalCalories: mockData.totalCalories,
-    protein: mockData.protein,
-    carbs: mockData.carbs,
-    fat: mockData.fat,
-    goals: mockData.goals,
+    totalCalories: Number(totalNutrition.kcal.toFixed(1)),
+    protein: Number(totalNutrition.protein.toFixed(1)),
+    carbs: Number(totalNutrition.carbs.toFixed(1)),
+    fat: Number(totalNutrition.fat.toFixed(1)),
+
+    // 목표치는 고정값 or 사용자에 맞게 변경 가능
+    goals: {
+      protein: 80,
+      carbs: 200,
+      fat: 70,
+    },
   };
 
+  // AiReport는 이후 AI 연동되면 dynamic하게 처리 가능
   const reportData = {
-    score: mockData.score,
-    tags: mockData.tags,
-    comment: mockData.comment,
+    score: 85,
+    tags: ["양호한 단백질", "식이섬유 부족", "나트륨 다소 높음"],
+    comment:
+      "오늘은 전체적으로 균형 잡힌 식단이었지만 나트륨 섭취가 조금 높은 편이에요. 국물 음식은 양을 줄이거나 건더기 위주로 드시는 것을 추천합니다!",
   };
 
   return (
     <div className={styles.analysisWrapper}>
       <div className={styles.analysisHeader}>
-        <h2>오늘의 식단 리포트</h2>
+        <h2>식사 리포트</h2>
         <p>
-          오늘 섭취한 영양소를 분석하고, 더 건강한 식습관을 위한 AI 조언을
-          확인해 보세요.
+          섭취한 음식들의 총 영양성분을 분석한 결과예요. 내 식습관을 이해하고 더
+          건강하게 조절해볼까요?
         </p>
       </div>
 
       <div className={styles.analysisContent}>
-        {/*섭취 영양 분석 */}
+        {/* 섭취 영양 분석 */}
         <NutritionSummary data={summaryData} />
-        {/*ai 평가 및 코멘트*/}
+
+        {/* AI 평가 및 코멘트 */}
         <AiReport data={reportData} />
       </div>
     </div>

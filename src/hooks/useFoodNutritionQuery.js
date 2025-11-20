@@ -1,39 +1,38 @@
 import { useQuery } from "@tanstack/react-query";
 import { foodApi } from "../utils/apiFood";
+import { XMLParser } from "fast-xml-parser";
 
-const fetchFoodNutrition = async (foodCode) => {
+export const fetchFoodNutrition = async (foodCode) => {
   console.log(`영양정보 검색 : ${foodCode}`);
 
-  const response = await foodApi.get("/MzenFoodNutri", {
+  const response = await foodApi.get("/MzenFoodNutri/getKoreanFoodIdntList", {
     params: {
       food_Code: foodCode,
     },
   });
 
   let rawData = response.data;
+  let parsedData = null;
 
-  if (typeof rawData === "string") {
-    try {
-      const fixedData = rawData.replace(/,\s*,/g, ",");
-      rawData = JSON.parse(fixedData);
-    } catch (e) {
-      console.error("JSON 파싱 실패:", e);
-    }
+  try {
+    const parser = new XMLParser({
+      ignoreAttributes: false, // 속성값도 가져올지 여부 (필요 없다면 true)
+      parseTagValue: true, // 숫자 자동 변환 (예: "57.0" -> 57.0)
+      isArray: (name) => name === "idnt_List",
+    });
+    parsedData = parser.parse(rawData); // XML 문자열을 JS 객체로 변환
+    console.log("XML 변환 결과:", parsedData);
+  } catch (e) {
+    console.error("XML 파싱 실패:", e);
+    return null;
   }
 
-  const item = rawData?.response?.body?.items?.item;
+  let item = parsedData?.response?.body?.items?.item;
+  if (Array.isArray(item)) item = item[0];
+
   if (!item) return null;
 
-  let ingredients = item.idnt_List;
-  if (!ingredients) ingredients = [];
-
-  if (ingredients.food) {
-    ingredients = Array.isArray(ingredients.food)
-      ? ingredients.food
-      : [ingredients.food];
-  } else if (!Array.isArray(ingredients)) {
-    ingredients = [ingredients];
-  }
+  const ingredients = item.idnt_List || [];
 
   const standardTotal = ingredients.reduce(
     (acc, cur) => {

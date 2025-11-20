@@ -5,10 +5,43 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
+/*ai 조언 받기 버튼*/
+.placeholder {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.limitInfo {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 5px;
+}
+
+.analyzeButton {
+  background-color: #6200ea; /* 포인트 컬러 (보라색 등) */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.analyzeButton:hover {
+  background-color: #3700b3;
+}
+
+/*ai 피드백 결과*/
 .cardSubtitle {
   font-size: 0.8rem;
   color: #888;
-  margin-top: -0.5rem;
+  margin-top: 0.4rem;
   margin-bottom: 1rem;
 }
 
