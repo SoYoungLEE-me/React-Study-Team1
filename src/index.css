@@ -1,4 +1,5 @@
-@import url("/src/root.css"); /* 변수 */
+@import url("/src/root.css");
+/* 변수 */
 /* 폰트 - 프리텐다드*/
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css");
 /* 영문 - 로보토*/
@@ -139,7 +140,9 @@ video {
   border: 0;
   line-height: 160%;
   letter-spacing: normal;
-} /* delete vertical-align,font:inherit; */
+}
+
+/* delete vertical-align,font:inherit; */
 body,
 html {
   width: 100%;
@@ -150,24 +153,30 @@ html {
   font-family: var(--kor);
   word-break: keep-all;
   background: var(--grayBg);
+  overflow-x: hidden;
 }
+
 * {
   font-family: var(--kor);
   word-break: keep-all;
 }
+
 body {
   -webkit-text-size-adjust: none;
   word-break: keep-all;
 }
+
 ol,
 ul,
 li {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -175,17 +184,20 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: separate;
   border-spacing: 0;
   font-size: 0.9375rem;
 }
+
 table caption {
   overflow: hidden;
   font-size: 0;
   line-height: 0;
   font-size: 0.9375rem;
 }
+
 tbody,
 tfoot,
 thead,
@@ -196,34 +208,43 @@ td {
   line-height: 160%;
   letter-spacing: normal;
 }
+
 dt {
   display: block;
 }
+
 hr {
   display: none;
 }
+
 a {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
 }
+
 a,
 a:hover {
   transition: all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 address {
   font-style: normal;
 }
+
 input,
 select,
 img {
   vertical-align: middle;
 }
+
 input:focus,
 textarea:focus,
 button:focus {
   outline: none;
-} /* 크롬에서 커서 클릭시 파란색 테두리 제외*/
+}
+
+/* 크롬에서 커서 클릭시 파란색 테두리 제외*/
 /* input, button {border-radius:0; -webkit-appearance:none; -moz-appearance:none; appearance:none;} */
 select {
   border-radius: 0;
@@ -232,18 +253,23 @@ select {
   appearance: none;
   background: url("/img/cat_arrow_bk.svg") no-repeat right 20px center/10px auto;
 }
+
 select::-ms-expand {
   display: none;
 }
+
 input[type="text"]::-ms-clear {
   display: none;
 }
+
 input::-webkit-input-placeholder {
   color: #999;
 }
+
 input:-ms-input-placeholder {
   color: #999;
 }
+
 input::placeholder {
   color: #999;
 }
@@ -252,6 +278,7 @@ input::placeholder {
     @media  ~980px               
 *******************************************************************************/
 @media all and (max-width: 1024px) {
+
   html,
   body {
     font-size: 16px;
@@ -262,6 +289,7 @@ input::placeholder {
     @media 481~680px
 *******************************************************************************/
 @media all and (max-width: 786px) {
+
   html,
   body,
   div,
@@ -335,12 +363,15 @@ input::placeholder {
   audio,
   video {
     line-height: 150%;
-  } /* delete vertical-align,font:inherit; */
+  }
+
+  /* delete vertical-align,font:inherit; */
   body,
   html {
     font-size: 14px;
     font-weight: 400;
   }
+
   select {
     background-position: right 10px center;
     background-size: 8px auto;
@@ -348,9 +379,13 @@ input::placeholder {
 
   /*** 모바일 폰트 크기 조정 ***/
   * {
-    -webkit-text-size-adjust: none; /* 크롬, 사파리, 오페라(신) */
-    -ms-text-size-adjust: none; /* IE */
-    -moz-text-size-adjust: none; /* 파이어폭스 */
-    -o-text-size-adjust: none; /* 오페라(구)*/
+    -webkit-text-size-adjust: none;
+    /* 크롬, 사파리, 오페라(신) */
+    -ms-text-size-adjust: none;
+    /* IE */
+    -moz-text-size-adjust: none;
+    /* 파이어폭스 */
+    -o-text-size-adjust: none;
+    /* 오페라(구)*/
   }
 }
