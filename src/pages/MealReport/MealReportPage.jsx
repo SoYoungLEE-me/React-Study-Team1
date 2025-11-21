@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./MealReport.module.css"; // CSS Module import
 import NutritionSummary from "./components/NutritionSummary/NutritionSummary";
 import AiReport from "./components/AiReport/AiReport";
+import { useLocation } from "react-router-dom";
 
 // Mock 데이터
 const mockData = {
@@ -21,13 +22,13 @@ const mockData = {
 };
 
 const MealReportPage = () => {
-  const summaryData = {
-    totalCalories: mockData.totalCalories,
-    protein: mockData.protein,
-    carbs: mockData.carbs,
-    fat: mockData.fat,
-    goals: mockData.goals,
-  };
+  const location = useLocation();
+  const { summary, type } = location.state || {};
+
+  if (!summary) return <div>데이터가 없습니다.</div>;
+
+  const typeLabel =
+    type === "breakfast" ? "아침" : type === "lunch" ? "점심" : type === "dinner" ? "저녁" : "간식";
 
   const reportData = {
     score: mockData.score,
@@ -38,16 +39,13 @@ const MealReportPage = () => {
   return (
     <div className={styles.analysisWrapper}>
       <div className={styles.analysisHeader}>
-        <h2>오늘의 식단 리포트</h2>
-        <p>
-          오늘 섭취한 영양소를 분석하고, 더 건강한 식습관을 위한 AI 조언을
-          확인해 보세요.
-        </p>
+        <h2>오늘의 {typeLabel} 식단 리포트</h2>
+        <p>오늘 섭취한 영양소를 분석하고, 더 건강한 식습관을 위한 AI 조언을 확인해 보세요.</p>
       </div>
 
       <div className={styles.analysisContent}>
         {/*섭취 영양 분석 */}
-        <NutritionSummary data={summaryData} />
+        <NutritionSummary data={summary} />
         {/*ai 평가 및 코멘트*/}
         <AiReport data={reportData} />
       </div>
