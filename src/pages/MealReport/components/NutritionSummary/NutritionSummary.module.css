@@ -23,6 +23,16 @@
   display: inline-block;
 }
 
+.subDetails {
+  margin-top: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 20px;
+}
+
 .barSection {
   margin-top: 1.5rem;
 }

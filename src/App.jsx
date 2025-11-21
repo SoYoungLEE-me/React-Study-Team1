@@ -1,4 +1,5 @@
 import "./App.css";
+import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import MainPage from "./pages/Main/MainPage";
@@ -7,8 +8,15 @@ import MealReportPage from "./pages/MealReport/MealReportPage";
 import Login from "./pages/Login/Login";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import TestApi from "./pages/TestApi";
+import { useUserGoal } from "./stores/useUsergoalStore";
 
 function App() {
+  const loadGoal = useUserGoal((s) => s.loadGoal);
+
+  useEffect(() => {
+    loadGoal(); //앱 실행 시 단 한 번 실행
+  }, []);
+
   return (
     <div className="App">
       <Routes>

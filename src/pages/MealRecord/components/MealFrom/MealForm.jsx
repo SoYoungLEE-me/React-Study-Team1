@@ -6,7 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 
 const MealForm = () => {
-  const { selectedDate, editType, getMealsByDate, saveMeal, setEditType } = useMealStore();
+  const { selectedDate, editType, getMealsByDate, saveMeal, setEditType } =
+    useMealStore();
   const todayMeals = getMealsByDate(selectedDate);
 
   const [type, setType] = useState(editType || "breakfast");

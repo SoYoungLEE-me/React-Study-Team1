@@ -2,12 +2,18 @@ import React, { useState } from "react";
 import { useFoodListQuery } from "../hooks/useFoodListQuery";
 import { useFoodStore } from "../stores/useFoodStore";
 import { useNavigate } from "react-router-dom";
+import { useUserGoal } from "../stores/useUsergoalStore";
 
 const TestApi = () => {
   const [input, setInput] = useState("");
   const [keyword, setKeyword] = useState("");
 
   const navigate = useNavigate();
+
+  const { savedGoal } = useUserGoal();
+
+  console.log(savedGoal.calories);
+  console.log(savedGoal.carbs);
 
   const {
     data: foodList,

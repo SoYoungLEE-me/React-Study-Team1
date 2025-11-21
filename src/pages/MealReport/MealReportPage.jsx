@@ -17,22 +17,6 @@ const MealReportPage = () => {
     );
   }
 
-  // NutritionSummary에 넘길 요약 데이터
-  const summaryData = {
-    totalCalories: Number(totalNutrition.kcal.toFixed(1)),
-    protein: Number(totalNutrition.protein.toFixed(1)),
-    carbs: Number(totalNutrition.carbs.toFixed(1)),
-    fat: Number(totalNutrition.fat.toFixed(1)),
-
-    // 목표치는 고정값 or 사용자에 맞게 변경 가능
-    goals: {
-      protein: 80,
-      carbs: 200,
-      fat: 70,
-    },
-  };
-
-  // AiReport는 이후 AI 연동되면 dynamic하게 처리 가능
   const reportData = {
     score: 85,
     tags: ["양호한 단백질", "식이섬유 부족", "나트륨 다소 높음"],
@@ -52,7 +36,7 @@ const MealReportPage = () => {
 
       <div className={styles.analysisContent}>
         {/* 섭취 영양 분석 */}
-        <NutritionSummary data={summaryData} />
+        <NutritionSummary />
 
         {/* AI 평가 및 코멘트 */}
         <AiReport data={reportData} />
