@@ -71,7 +71,7 @@ const MealReportPage = () => {
         <NutritionSummary data={summaryData} />
         {/* <NutritionSummary data={report} /> */}
         {/*ai 평가 및 코멘트*/}
-        <AiReport data={reportData} />
+        <AiReport nutrition={summaryData} />
         {/* <AiReport data={report} /> */}
       </div>
     </div>

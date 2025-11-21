@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useMealStore } from "../../../../stores/useMealStore";
 import { useAiStore } from "../../../../stores/useAiStore";
-import { getMealAnalysis } from "../../../../utils/apis/geminiAiApi";
+// import { getMealAnalysis } from "../../../../utils/apis/geminiAiApi";
 import { useNavigate } from "react-router-dom";
 import styles from "./MealFrom.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
