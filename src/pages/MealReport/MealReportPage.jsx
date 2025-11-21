@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./MealReport.module.css"; // CSS Module import
 import NutritionSummary from "./components/NutritionSummary/NutritionSummary";
 import AiReport from "./components/AiReport/AiReport";
+import { useAiStore } from "../../stores/useAiStore"; // 추가
 
 // Mock 데이터
 const mockData = {
@@ -21,6 +22,8 @@ const mockData = {
 };
 
 const MealReportPage = () => {
+  const { report } = useAiStore();
+  if (!report) return <div>식단 분석 결과가 없습니다.</div>;
   const summaryData = {
     totalCalories: mockData.totalCalories,
     protein: mockData.protein,
@@ -48,8 +51,10 @@ const MealReportPage = () => {
       <div className={styles.analysisContent}>
         {/*섭취 영양 분석 */}
         <NutritionSummary data={summaryData} />
+        {/* <NutritionSummary data={report} /> */}
         {/*ai 평가 및 코멘트*/}
         <AiReport data={reportData} />
+                {/* <AiReport data={report} /> */}
       </div>
     </div>
   );

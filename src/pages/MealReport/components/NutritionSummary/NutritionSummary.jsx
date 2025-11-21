@@ -3,6 +3,18 @@ import styles from "./NutritionSummary.module.css";
 import NutrientBar from "../NutrientBar/NutrientBar";
 
 const NutritionSummary = ({ data }) => {
+  const safeData = {
+    totalCalories: data?.totalCalories || 0,
+    protein: data?.protein || 0,
+    carbs: data?.carbs || 0,
+    fat: data?.fat || 0,
+    goals: {
+      protein: data?.goals?.protein || 1,
+      carbs: data?.goals?.carbs || 1,
+      fat: data?.goals?.fat || 1,
+    },
+  };
+
   return (
     <div className={styles.card}>
       <h3>오늘의 영양 섭취</h3>
