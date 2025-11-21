@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 // 🔽 React Query 훅은 제거
 // import { useFoodListQuery } from "../../../../hooks/useFoodListQuery";
 import { useFoodStore } from "../../../../stores/useFoodStore";
-import { apiNutrition } from "../../../../utils/apiNutrition"; // ✅ 이거 적용
+import { apiNutrition } from "../../../../utils/apiNutrition"; 
 import styles from "./FoodSearchModal.module.css";
 
 const FoodSearchModal = ({ onSelect }) => {
     const [input, setInput] = useState("");
-    const [foodList, setFoodList] = useState([]);      // ✅ 결과 리스트
-    const [isLoading, setIsLoading] = useState(false); // ✅ 로딩 상태
-    const [error, setError] = useState(null);          // ✅ 에러 상태
+    const [foodList, setFoodList] = useState([]);      
+    const [isLoading, setIsLoading] = useState(false); 
+    const [error, setError] = useState(null);          
 
     // 🔹 전역 스토어: "임시 선택 바구니" 역할
     const { selectedFoods, addFood, removeFood, clearSelectedFoods } = useFoodStore();
@@ -40,7 +40,6 @@ const FoodSearchModal = ({ onSelect }) => {
     const isSelected = (food) =>
         selectedFoods.some((item) => item.code === food.code);
 
-    // ✅ 음식 클릭 시: onSelect 호출 X, 임시 선택만 토글
     const handleClickFood = (food) => {
         if (isSelected(food)) {
             removeFood(food.code);
@@ -49,7 +48,7 @@ const FoodSearchModal = ({ onSelect }) => {
         }
     };
 
-    // ✅ “선택한 음식 추가하기” 버튼 눌렀을 때만 부모로 전달
+
     const handleConfirmSelected = () => {
         if (!onSelect || selectedFoods.length === 0) return;
 
