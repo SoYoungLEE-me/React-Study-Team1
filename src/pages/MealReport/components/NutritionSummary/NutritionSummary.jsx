@@ -4,7 +4,7 @@ import NutrientBar from "../NutrientBar/NutrientBar";
 
 const NutritionSummary = ({ data }) => {
   const safeData = {
-    totalCalories: data?.totalCalories || 0,
+   totalCalories: data?.totalCalories ?? data?.calories ?? 0,
     protein: data?.protein || 0,
     carbs: data?.carbs || 0,
     fat: data?.fat || 0,
@@ -24,16 +24,16 @@ const NutritionSummary = ({ data }) => {
 
       <div className={styles.nutrientDetails}>
         <p>
-          <strong>총 칼로리:</strong> {data.totalCalories} kcal
+          <strong>총 칼로리:</strong> {safeData.totalCalories} kcal
         </p>
         <p>
-          <strong>단백질:</strong> {data.protein} g
+          <strong>단백질:</strong> {safeData.protein} g
         </p>
         <p>
-          <strong>탄수화물:</strong> {data.carbs} g
+          <strong>탄수화물:</strong> {safeData.carbs}  g
         </p>
         <p>
-          <strong>지방:</strong> {data.fat} g
+          <strong>지방:</strong> {safeData.fat}  g
         </p>
       </div>
 
