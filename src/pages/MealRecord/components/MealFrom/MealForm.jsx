@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./MealFrom.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FoodSearchModal from "../FoodSearchModal/FoodSearchModal";
 
 const MealForm = () => {
   const { selectedDate, editType, getMealsByDate, saveMeal, setEditType } = useMealStore();
@@ -18,6 +19,12 @@ const MealForm = () => {
   const [items, setItems] = useState(todayMeals[type] || []);
   const [input, setInput] = useState("");
   const [time, setTime] = useState("00:00");
+
+  const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
+  const handleSelectFood = (food) => {
+    setItems((prev) => [...prev, { time, text: food.name }]);
+    setIsFoodModalOpen(false);
+  }
 
   useEffect(() => {
     setType(editType || "breakfast");
@@ -122,7 +129,10 @@ const MealForm = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && addItem()}
           />
-          <button onClick={addItem}>추가</button>
+          <button type="button" onClick={() => setIsFoodModalOpen(true)}>
+            검색
+          </button>
+          {/* <button onClick={addItem}>추가</button> */}
         </div>
       </div>
 
@@ -152,6 +162,20 @@ const MealForm = () => {
         <button onClick={deleteAll}>전체 삭제</button>
         <button onClick={goToReport}>요약 보러 가기</button>
       </div>
+
+      {isFoodModalOpen && (
+        <div className={styles.modal_backdrop}>
+          <div className={styles.modal_content}>
+             <FoodSearchModal onSelect={handleSelectFood} />
+             <button className={styles.modal_close}
+              onClick={()=> setIsFoodModalOpen(false)}>
+                닫기
+              </button>
+          </div>
+        </div>
+
+      )}
+
     </div>
   );
 };

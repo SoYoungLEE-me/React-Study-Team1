@@ -1,0 +1,190 @@
+/* 전체 래퍼 */
+.wrapper {
+  padding: 16px 18px;
+  min-width: 580px;
+}
+
+/* 제목 */
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* 검색 영역 */
+.searchRow {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.searchInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  font-size: 14px;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.2);
+}
+
+.searchButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.searchButton:hover {
+  background-color: #3a8f41;
+}
+
+/* 상태 문구 */
+.statusText {
+  font-size: 13px;
+  color: #667085;
+  margin-bottom: 8px;
+}
+
+.errorText {
+  font-size: 13px;
+  color: #d92d20;
+  margin-bottom: 8px;
+}
+
+/* 본문 레이아웃 */
+.contentRow {
+  display: flex;
+  gap: 20px;
+}
+
+/* 왼쪽 컬럼 (검색 결과) */
+.resultColumn {
+  flex: 1;
+}
+
+.subTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.resultList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.resultItem {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f2f4f7;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  transition: background-color 0.1s ease;
+}
+
+.resultItem:last-child {
+  border-bottom: none;
+}
+
+.resultItem:hover {
+  background-color: #f5f7fb;
+}
+
+.resultItemSelected {
+  background-color: #e3f2fd;
+}
+
+.resultName {
+  font-size: 14px;
+}
+
+.checkMark {
+  color: #1565c0;
+  font-size: 14px;
+}
+
+.selectedColumn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background-color: #f9fafb;
+}
+
+.emptyText {
+  font-size: 13px;
+  color: #888888;
+  margin-top: 4px;
+}
+
+/* 선택된 리스트 */
+.selectedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selectedItem {
+  padding: 8px 10px;
+  border-bottom: 1px solid #e4e7ec;
+  background-color: white;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selectedItem:last-child {
+  margin-bottom: 0;
+}
+
+.selectedName {
+  font-size: 14px;
+}
+
+.deleteButton {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.deleteButton:hover {
+  background-color: #e53935;
+}
+.addButton {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--main, #4caf50);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #3a8f41;
+}

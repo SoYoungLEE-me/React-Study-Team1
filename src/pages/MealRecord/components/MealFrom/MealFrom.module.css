@@ -168,6 +168,38 @@
   border-color: var(--main);
 }
 
+.modal_backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal_content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal_close {
+  margin-top: 12px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #e4e7ec;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+
 @media all and (max-width: 1024px) {
 }
 @media all and (max-width: 768px) {
