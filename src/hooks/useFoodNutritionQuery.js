@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { foodApi } from "../utils/apiFood";
 
-const fetchFoodNutrition = async (foodCode) => {
+// export는 떼셔도 돼요. 제가 하다가  api 오류때문에 추가한 부분이에요
+export const fetchFoodNutrition = async (foodCode) => {
   console.log(`영양정보 검색 : ${foodCode}`);
 
   const response = await foodApi.get("/MzenFoodNutri", {
@@ -28,9 +29,7 @@ const fetchFoodNutrition = async (foodCode) => {
   if (!ingredients) ingredients = [];
 
   if (ingredients.food) {
-    ingredients = Array.isArray(ingredients.food)
-      ? ingredients.food
-      : [ingredients.food];
+    ingredients = Array.isArray(ingredients.food) ? ingredients.food : [ingredients.food];
   } else if (!Array.isArray(ingredients)) {
     ingredients = [ingredients];
   }
