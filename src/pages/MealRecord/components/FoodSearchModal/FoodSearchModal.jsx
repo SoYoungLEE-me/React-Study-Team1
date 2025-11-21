@@ -1,32 +1,40 @@
 // src/components/FoodSearchModal.jsx
 import React, { useState, useEffect } from "react";
-import { useFoodListQuery } from "../../../../hooks/useFoodListQuery";
+// 🔽 React Query 훅은 제거
+// import { useFoodListQuery } from "../../../../hooks/useFoodListQuery";
 import { useFoodStore } from "../../../../stores/useFoodStore";
+import { apiNutrition } from "../../../../utils/apiNutrition"; // ✅ 이거 적용
 import styles from "./FoodSearchModal.module.css";
 
 const FoodSearchModal = ({ onSelect }) => {
     const [input, setInput] = useState("");
-    const [keyword, setKeyword] = useState("");
+    const [foodList, setFoodList] = useState([]);      // ✅ 결과 리스트
+    const [isLoading, setIsLoading] = useState(false); // ✅ 로딩 상태
+    const [error, setError] = useState(null);          // ✅ 에러 상태
 
-    const {
-        data: foodList,
-        isLoading,
-        isError,
-        error,
-    } = useFoodListQuery(keyword);
-
-    useEffect(() => {
-        if (foodList) {
-            console.log("[API 응답] 컴포넌트가 받은 데이터:", foodList);
-        }
-    }, [foodList]);
-
-    // 🔹 전역 스토어: 여기서는 "임시 선택 바구니" 역할
+    // 🔹 전역 스토어: "임시 선택 바구니" 역할
     const { selectedFoods, addFood, removeFood, clearSelectedFoods } = useFoodStore();
 
-    const handleSearch = () => {
+    const handleSearch = async () => {
         if (!input.trim()) return;
-        setKeyword(input);
+
+        try {
+            setIsLoading(true);
+            setError(null);
+
+            // ✅ apiNutrition 직접 호출
+            const result = await apiNutrition(input);
+
+            console.log("[API 응답] 검색어:", input);
+            console.log("[API 응답] 결과:", result);
+
+            setFoodList(result || []);
+        } catch (err) {
+            console.error("검색 중 에러:", err);
+            setError(err);
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     const isSelected = (food) =>
@@ -35,10 +43,8 @@ const FoodSearchModal = ({ onSelect }) => {
     // ✅ 음식 클릭 시: onSelect 호출 X, 임시 선택만 토글
     const handleClickFood = (food) => {
         if (isSelected(food)) {
-            // 이미 선택되어 있으면 제거
             removeFood(food.code);
         } else {
-            // 선택 안 되어 있으면 추가
             addFood(food);
         }
     };
@@ -47,13 +53,10 @@ const FoodSearchModal = ({ onSelect }) => {
     const handleConfirmSelected = () => {
         if (!onSelect || selectedFoods.length === 0) return;
 
-        // 선택된 음식들을 하나씩 부모(MealForm)에 전달
         selectedFoods.forEach((food) => {
             onSelect(food);
         });
         clearSelectedFoods();
-        // 필요하면 여기서 선택 바구니 비우는 로직을 추가할 수도 있음
-        // ex) clearFoods() 같은 함수가 스토어에 있다면 사용
     };
 
     return (
@@ -75,9 +78,12 @@ const FoodSearchModal = ({ onSelect }) => {
                 </button>
             </div>
 
+            {/* 상태 표시 */}
             {isLoading && <p className={styles.statusText}>로딩 중... ⏳</p>}
-            {isError && (
-                <p className={styles.errorText}>에러 발생: {error.message}</p>
+            {error && (
+                <p className={styles.errorText}>
+                    에러 발생: {error.message || "잠시 후 다시 시도해주세요."}
+                </p>
             )}
 
             {/* 결과 + 선택 리스트 */}
@@ -127,7 +133,6 @@ const FoodSearchModal = ({ onSelect }) => {
                                 ))}
                             </ul>
 
-                            {/* ✅ 여기서 확정 추가 */}
                             <button
                                 type="button"
                                 className={styles.addButton}

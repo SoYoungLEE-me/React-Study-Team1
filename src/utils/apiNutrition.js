@@ -21,6 +21,8 @@ export const apiNutrition = async (keyword) => {
     return name.includes(key);
   });
 
+
+  // 공공데이터에서 키값을 한글로 줘서 원래 한글로 호출해야 하지만 통합을 위해 key 값을 매핑함
     return filtered.map((item, index) => ({
     code: `${item["음식명"]}_${index}`,
     name: item["음식명"],
