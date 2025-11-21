@@ -7,6 +7,7 @@ import styles from "./MealFrom.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FoodSearchModal from "../FoodSearchModal/FoodSearchModal";
+import { apiNutrition } from "../../../../utils/apiNutrition";
 
 const MealForm = () => {
   const { selectedDate, editType, getMealsByDate, saveMeal, setEditType } = useMealStore();
@@ -21,8 +22,16 @@ const MealForm = () => {
   const [time, setTime] = useState("00:00");
 
   const [isFoodModalOpen, setIsFoodModalOpen] = useState(false);
+
+
   const handleSelectFood = (food) => {
-    setItems((prev) => [...prev, { time, text: food.name }]);
+    setItems((prev) => [...prev, {
+      time, text: food.name
+      , calories: food.calories,
+      carbs: food.carbs,
+      protein: food.protein,
+      fat: food.fat,
+    }]);
     setIsFoodModalOpen(false);
   }
 
@@ -58,23 +67,59 @@ const MealForm = () => {
   const removeItem = (index) => setItems(items.filter((_, i) => i !== index));
   const deleteAll = () => setItems([]);
 
+  //음식별로 영양성분을 합산하자
+  const calcMealNutrition = (mealItems) => {
+    return mealItems.reduce((total, item) => {
+      if (!item.calories && !item.carbs && !item.protein && !item.fat) return total;
+
+      return {
+        calories: total.calories + (item.calories || 0),
+        carbs: total.carbs + (item.carbs || 0),
+        protein: total.protein + (item.protein || 0),
+        fat: total.fat + (item.fat || 0),
+      };
+    }, { calories: 0, carbs: 0, protein: 0, fat: 0 });
+  };
+
   // 한 끼니만 보여주기
   const goToReport = async () => {
+    // 
+
     save(); // 입력값 먼저 저장
     const meals = getMealsByDate(selectedDate);
 
     // ✅ 선택된 식사 타입만 AI 분석
     const mealForAnalysis = { [type]: meals[type] || [] };
+    const currentMealItems = meals[type] || [];
+    const nutritionSummary = calcMealNutrition(currentMealItems);
 
-    try {
-      const analysis = await getMealAnalysis(mealForAnalysis);
-      setReport(analysis);
-      useMealStore.getState().saveAnalysis(selectedDate, analysis);
-      navigate("/report");
-    } catch (error) {
-      console.error("AI 분석 실패:", error);
-      alert("AI 분석 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
-    }
+    // 5) 리포트에 보낼 데이터 구성
+    const reportData = {
+      date: selectedDate,
+      mealType: type,
+      items: currentMealItems, // 선택한 음식 리스트 (배열)
+      totalCalories: nutritionSummary.calories,
+      protein: nutritionSummary.protein,
+      carbs: nutritionSummary.carbs,
+      fat: nutritionSummary.fat,
+    };
+
+    console.log(" [goToReport] 저장된 식단(meals):", meals);
+    console.log(" [goToReport] 현재 끼니 아이템(currentMealItems):", currentMealItems);
+    console.log(" [goToReport] 영양합산 결과(nutritionSummary):", nutritionSummary);
+    console.log(" [goToReport] 보내는 reportData:", reportData);
+    setReport(reportData);
+    navigate("/report");
+
+    // try {
+    //   const analysis = await getMealAnalysis(mealForAnalysis);
+    //   setReport(analysis);
+    //   useMealStore.getState().saveAnalysis(selectedDate, analysis);
+    //   navigate("/report");
+    // } catch (error) {
+    //   console.error("AI 분석 실패:", error);
+    //   alert("AI 분석 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+    // }
   };
 
   // 모든끼니 보여주기
@@ -166,11 +211,11 @@ const MealForm = () => {
       {isFoodModalOpen && (
         <div className={styles.modal_backdrop}>
           <div className={styles.modal_content}>
-             <FoodSearchModal onSelect={handleSelectFood} />
-             <button className={styles.modal_close}
-              onClick={()=> setIsFoodModalOpen(false)}>
-                닫기
-              </button>
+            <FoodSearchModal onSelect={handleSelectFood} />
+            <button className={styles.modal_close}
+              onClick={() => setIsFoodModalOpen(false)}>
+              닫기
+            </button>
           </div>
         </div>
 
