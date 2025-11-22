@@ -3,6 +3,10 @@
   font-size: 17px;
 }
 
+.tags {
+  margin: 10px 0;
+}
+
 .tags span {
   background: #f1f5f9;
   padding: 6px 10px;

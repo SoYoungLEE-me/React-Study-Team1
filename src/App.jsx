@@ -6,10 +6,13 @@ import MealRecordPage from "./pages/MealRecord/MealRecordPage";
 import MealReportPage from "./pages/MealReport/MealReportPage";
 import Login from "./pages/Login/Login";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import Join from "./pages/Join/Join";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop></ScrollToTop>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<MainPage />} />
@@ -17,6 +20,7 @@ function App() {
           <Route path="/report" element={<MealReportPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/join" element={<Join />} />
         </Route>
       </Routes>
     </div>

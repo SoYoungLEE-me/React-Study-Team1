@@ -1,0 +1,39 @@
+/* ===== 기본 스타일 (PC 기준) ===== */
+
+.summary_card {
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.summary_desc {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+.summary_content {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 30px;
+  padding: 30px 50px;
+  background-color: var(--white);
+  flex-direction: column;
+}
+
+.content {
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.summary_button {
+    background-color: var(--main);
+    border: 0px;
+    width: 150px;
+    height: 40px;
+    color: var(--white);
+    border-radius: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './RecommendList.module.css'
-import RecommendItem from '../recommendItem/RecommendItem'
+import RecommendItem from './recommendItem/RecommendItem'
 
 const RecommendList = () => {
   const items = [

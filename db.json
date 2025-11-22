@@ -1,0 +1,175 @@
+{
+  "user": [
+    {
+      "id": "amu123",
+      "pw": "1",
+      "name": "김아무",
+      "gender": "F",
+      "goal": "다이어트",
+      "goalKcal": 2000,
+      "goalProtein": 80
+    },
+    {
+      "id": "kim123",
+      "pw": "1",
+      "name": "김철수",
+      "gender": "M",
+      "goal": "유지",
+      "goalKcal": 1800,
+      "goalProtein": 50
+    },
+    {
+      "id": "jang",
+      "pw": "qw12",
+      "name": "장아무",
+      "gender": "F",
+      "goal": null,
+      "goalKcal": null,
+      "goalProtein": null
+    },
+    {
+      "id": "jojo",
+      "pw": "ie32",
+      "name": "조아무",
+      "gender": "M",
+      "goal": null,
+      "goalKcal": null,
+      "goalProtein": null
+    },
+    {
+      "id": "lee123",
+      "pw": "aa12",
+      "name": "이아무",
+      "gender": "F",
+      "goal": null,
+      "goalKcal": null,
+      "goalProtein": null
+    }
+  ],
+  "mealReport": [
+    {
+      "id": "amu123",
+      "date": "2025-11-19",
+      "mealtime": "morning",
+      "foods": "토스트, 계란후라이, 우유",
+      "time": "10:00",
+      "memo": null,
+      "commentID": 1
+    },
+    {
+      "id": "amu123",
+      "date": "2025-11-19",
+      "mealtime": "lunch",
+      "foods": "김치찌개, 공기밥, 계란말이",
+      "time": "13:00",
+      "memo": null,
+      "commentID": null
+    },
+    {
+      "id": "amu123",
+      "date": "2025-11-19",
+      "mealtime": "dinner",
+      "foods": "샐러드, 닭가슴살, 방울토마토",
+      "time": "18:00",
+      "memo": null,
+      "commentID": 2
+    },
+    {
+      "id": "amu123",
+      "date": "2025-11-20",
+      "mealtime": "lunch",
+      "foods": "햄버거, 감자튀김",
+      "time": "12:00",
+      "memo": null,
+      "commentID": null
+    },
+    {
+      "id": "amu123",
+      "date": "2025-11-20",
+      "mealtime": "dinner",
+      "foods": "막국수",
+      "time": "16:00",
+      "memo": null,
+      "commentID": null
+    },
+    {
+      "id": "kim123",
+      "date": "2025-11-20",
+      "mealtime": "morning",
+      "foods": "밥, 된장찌개, 콩나물무침",
+      "time": "09:00",
+      "memo": null,
+      "commentID": null
+    },
+    {
+      "id": "kim123",
+      "date": "2025-11-20",
+      "mealtime": "lunch",
+      "foods": "마라탕, 꿔바로우",
+      "time": "14:00",
+      "memo": null,
+      "commentID": 3
+    }
+  ],
+  "aiComment": [
+    {
+      "id": 1,
+      "totalKcal": 1850,
+      "protein": 72,
+      "carbohydrate": 230,
+      "fat": 58,
+      "score": 80,
+      "tag": "단백질 충분, 섬유질 부족, 나트륨 과다",
+      "comment": "아침을 먹었다니 멋지십니다! 하지만 밀가루를 조금 줄여보는건 어떨까요?"
+    },
+    {
+      "id": 2,
+      "totalKcal": 1500,
+      "protein": 72,
+      "carbohydrate": 200,
+      "fat": 51,
+      "score": 85,
+      "tag": "단백질 충분, 섬유질 충분, 나트륨 적당",
+      "comment": "너무 좋은 한끼입니다! 앞으로 이렇게 드셔보세요."
+    },
+    {
+      "id": 3,
+      "totalKcal": 2431,
+      "protein": 80,
+      "carbohydrate": 450,
+      "fat": 78,
+      "score": 72,
+      "tag": "단백질 충분, 섬유질 부족, 나트륨 과다",
+      "comment": "너무 자극적인 음식 뿐이네요. 야채를 챙겨보는건 어떨까요?"
+    }
+  ],
+  "todaySummary": [
+    {
+      "id": "amu123",
+      "date": "2025-11-19",
+      "protein": "충분",
+      "carbohydrate": "충분",
+      "fat": "충분",
+      "score": 88,
+      "comment": "오늘만 같은 영양소를 챙겨드시면 건강하실거예요!"
+    },
+    {
+      "id": "amu123",
+      "date": "2025-11-20",
+      "protein": "충분",
+      "carbohydrate": "부족",
+      "fat": "과다",
+      "score": 85,
+      "comment": "오늘은 단백질과 채소 섭취는 적절하지만, 국물 위주 식사로 나트륨이 다소 높은 편이에요."
+    },
+    {
+      "id": "kim123",
+      "date": "2025-11-20",
+      "protein": "충분",
+      "carbohydrate": "과다",
+      "fat": "과다",
+      "score": 78,
+      "comment": "자극적인 음식을 드셨군요. 내일은 샐러드나 구운 채소를 함께 곁들여 보세요."
+    }
+  ]
+}

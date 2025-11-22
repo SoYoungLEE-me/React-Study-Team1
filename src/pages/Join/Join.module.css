@@ -1,0 +1,147 @@
+/* 공통 박스 사이징 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.join_container {
+  max-width: 380px;
+  width: 92%;
+  margin: 60px auto;
+  padding: 30px 26px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 4px 18px rgba(0,0,0,0.1);
+
+  /* overflow 방지 */
+  overflow: hidden;
+}
+
+/* 타이틀 */
+.join_title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #16a34a;
+}
+
+/* 폼 */
+.join_form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 라벨 */
+.join_form label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* input */
+.join_input {
+  width: 100%;           /* 부모 기준 100% */
+  padding: 12px 14px;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s;
+}
+
+/* validation */
+.error_input {
+  border-color: #e11d48 !important;
+  box-shadow: 0 0 0 2px rgba(225, 29, 72, 0.15) !important;
+}
+.success_input {
+  border-color: #16a34a !important;
+  box-shadow: 0 0 0 2px rgba(22,163,74,0.15) !important;
+}
+
+/* 에러 텍스트 */
+.error_text {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #e11d48;
+}
+
+/* 성별 라디오 그룹 */
+.gender_group {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 6px;
+  flex-wrap: wrap; /* 줄바꿈 허용해서 넘침 방지 */
+}
+
+.gender_group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+}
+
+.gender_group input {
+  transform: scale(1.15);
+  accent-color: #16a34a;
+}
+
+/* 버튼 */
+.join_button {
+  margin-top: 10px;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-weight: bold;
+  background: var(--main);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.join_button:disabled {
+  background: #9ae6b4;
+  cursor: not-allowed;
+}
+
+/* 서브 버튼 */
+.sub_button {
+  margin-top: 5px;
+  padding: 10px 14px;
+  font-size: 15px;
+  background: white;
+  border: 1px solid #16a34a;
+  color: #16a34a;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+  .join_container {
+    padding: 22px 20px;
+  }
+
+  .join_input {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  .gender_group {
+    gap: 14px;
+  }
+
+  .join_button,
+  .sub_button {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+}

@@ -1,25 +1,47 @@
-.stauts {
+.status_row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-  font-size: 15px;
+  gap: 12px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
-.stauts .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
+.label {
+  width: 70px;  
+  font-size: 14px;
+  font-weight: 500;
 }
 
-.stauts.good .dot {
+.bar_wrap {
+  flex: 1;
+  height: 10px;
+  background-color: #e5e7eb; /* gray-200 */
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bar_fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.35s ease;
+}
+
+/* 색상: 기존 level 사용 */
+.good {
   background-color: #34d399; /* green-400 */
 }
 
-.stauts.bad .dot {
+.bad {
   background-color: #f87171; /* red-400 */
 }
 
-.stauts.soso .dot {
+.soso {
   background-color: #facc15; /* yellow-400 */
+}
+
+.percent {
+  width: 40px;
+  text-align: right;
+  font-size: 13px;
+  color: #374151;
 }
