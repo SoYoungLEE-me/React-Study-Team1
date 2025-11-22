@@ -10,12 +10,12 @@
   margin-bottom: 1.5rem;
 }
 .analysisHeader h2 {
-  font-size: 1.5rem;
+  font-size: var(--page-title);
   margin: 0;
-  color: #1a202c;
+  color: var(--black);
 }
 .analysisHeader p {
-  font-size: 0.9rem;
+  font-size: var(--sub-title);
   color: #718096;
   margin-top: 0.25rem;
 }
@@ -27,7 +27,7 @@
 }
 
 /*반응형에서는 일렬로 바뀌게*/
-@media (max-width: 768px) {
+@media all and (max-width: 768px) {
   .analysisContent {
     grid-template-columns: 1fr;
   }
