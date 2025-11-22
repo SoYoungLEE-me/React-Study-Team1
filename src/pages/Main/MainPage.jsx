@@ -6,14 +6,21 @@ import { useUserStore } from "../../stores/useUserStore";
 import NoReportMeal from "./components/noReportMeal/NoReportMeal";
 import NoRecommendMeal from "./components/noRecommendMeal/NoRecommendMeal";
 import Landing from "./components/landing/Landing";
-import { useMealStore } from "../../stores/useMealStore";
-import { getToday } from "../../utils/getToday";
+import { useTodaySummary } from "../../stores/useTodaySummary";
 
 const Main = () => {
-  // const [isFirst, setIsFirst] = useState(false)
-  const isFirst = false;
   const {authenticate} = useUserStore();
-  const {meals} = useMealStore();
+  const {todaySummary} = useTodaySummary();
+  const [isFirst, setIsFirst] = useState();
+
+  useEffect(() => {
+    if(Object.keys(todaySummary).length === 0){
+      setIsFirst(true);
+    }else {
+      setIsFirst(false);
+    }
+  }, [todaySummary]);
+
   const data = {
   "score": 82,
   "nutrients": 
@@ -22,15 +29,6 @@ const Main = () => {
       ,{key: "fat", level: "bad", name: "지방"}
     ]
   };
-
-  // useEffect(() => {
-  //   let today = getToday();
-  //   if(today in meals){
-  //     setIsFirst(false);
-  //   } else{
-  //     setIsFirst(true);
-  //   }
-  // }, []);
 
   return (
     <div>

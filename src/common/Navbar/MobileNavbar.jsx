@@ -10,6 +10,16 @@ const MobileNavbar = ({open, onClose}) => {
     onClose();
   };
 
+  const goRecord = () => {
+    navigate('/record');
+    onClose();
+  };
+
+  const goSetting = () => {
+    navigate('/settings');
+    onClose();
+  };
+
   return (
     <div>
       <div className={`${styles.backdrop} ${open ? styles.show : ''}`} onClick={onClose}></div>
@@ -20,11 +30,9 @@ const MobileNavbar = ({open, onClose}) => {
         </div>
 
         <ul>
-          <li onClick={goHome}>Home</li>
-          <li onClick={onClose}>Log</li>
-          <li onClick={onClose}>Recommend</li>
-          <li onClick={onClose}>Report</li>
-          <li onClick={onClose}>Settings</li>
+          <li onClick={goHome}>홈</li>
+          <li onClick={onClose}>식단 입력</li>
+          <li onClick={onClose}>목표 설정</li>
         </ul>
       </nav>
     </div>

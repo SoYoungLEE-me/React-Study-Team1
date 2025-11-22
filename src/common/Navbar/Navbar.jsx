@@ -20,12 +20,15 @@ const Navbar = () => {
     navigate('/join');
   }
 
-  const gologout = () => {
+  const goLogout = () => {
     setShowProfileMenu(false);
     logout();
-    localStorage.removeItem('token');
-    localStorage.removeItem('accountname');
     navigate('/');
+  }
+
+  const goSetting = () => {
+    setShowProfileMenu(false);
+    navigate('/settings');
   }
 
   useEffect(() => {
@@ -39,9 +42,9 @@ const Navbar = () => {
       <div className={styles.header}>
         <Link to={'/'} className={styles.logo}><img className={styles.logo_img} src={'logo3.png'}></img></Link>
           <ul className={styles.nav_menu}>
-            <li><Link to={'/'}>Home</Link></li>
-            <li><Link to={'/record'}>Record</Link></li>
-            <li><Link to={'/'}>My Page</Link></li>
+            <li><Link to={'/'}>홈</Link></li>
+            <li><Link to={'/record'}>식단 입력</Link></li>
+            <li><Link to={'/settings'}>목표 설정</Link></li>
           </ul>
         <div className={styles.nav_right}>
           { authenticate
@@ -61,8 +64,8 @@ const Navbar = () => {
 
       {authenticate && showProfileMenu && (
         <div className={styles.profile_menu}>
-          <div className={styles.menu_item}>마이페이지</div>
-          <div className={styles.menu_item} onClick={gologout}>로그아웃</div>
+          <div className={styles.menu_item} onClick={goSetting}>목표 설정</div>
+          <div className={styles.menu_item} onClick={goLogout}>로그아웃</div>
         </div>
       )}
 
