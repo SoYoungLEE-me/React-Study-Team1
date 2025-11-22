@@ -1,8 +1,9 @@
 .container {
   width: 100%;
-  max-width: 1100px;
   margin: 0 auto;
+
   padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .heroSection {
@@ -11,15 +12,16 @@
 }
 
 .title {
-  font-size: 38px;
+  font-size: 2.111rem;
   font-weight: 800;
-  color: #4caf50;
+  color: var(--main);
 }
 
 .section {
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin-bottom: 70px;
   width: 100%;
 }
@@ -54,34 +56,50 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   justify-content: center;
+  gap: 20px;
 }
 
 .box {
   padding: 22px 28px;
-  background: #f7fafc;
-  font-size: 18px;
+  box-sizing: border-box;
+
+  background: var(--white);
+
   font-weight: 600;
-  border-radius: 16px;
+  border-radius: var(--borderR20);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.07);
+
   width: 100%;
+
+  font-size: 1rem;
 }
 
 .joinBtn {
-  background: #4caf50;
+  background: var(--main);
+  color: var(--white);
+
   padding: 14px 32px;
-  font-size: 18px;
-  border-radius: 50px;
-  border: none;
-  color: white;
+  box-sizing: border-box;
+
+  border-radius: var(--borderR30);
+  border: 1px solid transparent;
+
   cursor: pointer;
-  transition: 0.25s;
+  transition: all 0.3s ease;
+
+  font-size: 1rem;
+
+  margin-top: 30px;
 }
 
 .joinBtn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 18px rgba(76, 175, 80, 0.3);
+
+  background: var(--white);
+  color: Var(--main);
+  border-color: var(--main);
 }
 
 /* Responsive */
@@ -90,7 +108,7 @@
     width: 60vw;
   }
   .title {
-    font-size: 30px;
+    font-size: 1.8rem;
   }
   .box {
     max-width: 350px;
@@ -121,10 +139,9 @@
 
 @media (max-width: 480px) {
   .title {
-    font-size: 26px;
+    font-size: 1.6rem;
   }
   .box {
-    font-size: 15px;
   }
   .joinBtn {
     margin-top: 30px;
