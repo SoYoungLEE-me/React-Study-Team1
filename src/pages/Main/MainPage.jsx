@@ -9,26 +9,17 @@ import Landing from "./components/landing/Landing";
 import { useTodaySummary } from "../../stores/useTodaySummary";
 
 const Main = () => {
-  const {authenticate} = useUserStore();
-  const {todaySummary} = useTodaySummary();
+  const { authenticate } = useUserStore();
+  const { todaySummary } = useTodaySummary();
   const [isFirst, setIsFirst] = useState();
 
   useEffect(() => {
-    if(Object.keys(todaySummary).length === 0){
+    if (!todaySummary || Object.keys(todaySummary).length === 0) {
       setIsFirst(true);
-    }else {
+    } else {
       setIsFirst(false);
     }
   }, [todaySummary]);
-
-  const data = {
-    score: 82,
-    nutrients: [
-      { key: "protein", level: "good", name: "단백질" },
-      { key: "carbohydrate", level: "soso", name: "탄수화물" },
-      { key: "fat", level: "bad", name: "지방" },
-    ],
-  };
 
   return (
     <div>
@@ -38,7 +29,7 @@ const Main = () => {
         ) : isFirst ? (
           <NoReportMeal></NoReportMeal>
         ) : (
-          <SummaryToday data={data}></SummaryToday>
+          <SummaryToday></SummaryToday>
         )}
         {authenticate &&
           (isFirst ? <NoRecommendMeal></NoRecommendMeal> : <RecommendList></RecommendList>)}
