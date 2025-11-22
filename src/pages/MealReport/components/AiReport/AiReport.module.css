@@ -36,6 +36,15 @@
 .analyzeButton:hover {
   background-color: #3700b3;
 }
+.analyzeButton.retry {
+  margin: 0 auto;
+  display: flex;
+  margin-top: 20px;
+}
+.limitInfo {
+  margin-top: 20px;
+  text-align: center;
+}
 
 /*ai 피드백 결과*/
 .cardSubtitle {
