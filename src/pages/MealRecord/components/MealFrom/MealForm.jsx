@@ -43,7 +43,16 @@ const MealForm = () => {
   // 날짜나 식사 타입이 바뀌면 기존에 저장된 리스트 불러오기
   useEffect(() => {
     const updated = getMealsByDate(selectedDate);
-    setItems(updated[type] || []);
+    const mealList = updated[type] || [];
+
+    setItems(mealList);
+
+    // ✅ 저장된 시간이 있다면 수정 화면에 반영
+    if (mealList.length > 0) {
+      setTime(mealList[0].time);
+    } else {
+      setTime("00:00");
+    }
   }, [type, selectedDate, getMealsByDate]);
 
   // 시간 생성 (00:00 ~ 23:30)
@@ -104,9 +113,13 @@ const MealForm = () => {
 
   // 단순 저장
   const save = () => {
-    saveMeal(selectedDate, type, items);
+    const updatedItems = items.map((item) => ({
+      ...item,
+      time, // ✅ 변경된 시간 적용
+    }));
+
+    saveMeal(selectedDate, type, updatedItems);
     setEditType(null);
-    alert("식단이 저장되었습니다.");
   };
 
   // 저장 후 분석 페이지로 이동
