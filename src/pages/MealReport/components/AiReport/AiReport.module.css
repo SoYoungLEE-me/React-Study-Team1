@@ -39,7 +39,7 @@
 
 /*ai 피드백 결과*/
 .cardSubtitle {
-  font-size: 0.8rem;
+  font-size: var(--sub-title);
   color: #888;
   margin-top: 0.4rem;
   margin-bottom: 1rem;
