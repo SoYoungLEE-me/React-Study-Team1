@@ -27,15 +27,15 @@
 }
 
 /* 색상: 기존 level 사용 */
-.good {
+.protein {
   background-color: #34d399; /* green-400 */
 }
 
-.bad {
+.carbs {
   background-color: #f87171; /* red-400 */
 }
 
-.soso {
+.fat {
   background-color: #facc15; /* yellow-400 */
 }
 
