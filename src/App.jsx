@@ -8,10 +8,12 @@ import Login from "./pages/Login/Login";
 import SettingsPage from "./pages/SettingsPage/SettingsPage";
 import TestApi from "./pages/TestApi";
 import Join from "./pages/Join/Join";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop></ScrollToTop>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<MainPage />} />

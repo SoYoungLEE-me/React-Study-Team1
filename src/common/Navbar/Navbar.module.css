@@ -31,25 +31,36 @@
   color: #555;
 }
 
-.user_icon {
-  width: 34px;
-  height: 34px;
-  background: #dbeafe;
-  border-radius: 50%;
+.nav_right {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 15px;
-  font-weight: bold;
+  gap: 10px;        /* 버튼 간격 균등 */
+  flex-shrink: 0;   /* 버튼이 눌려 찌그러지는 것 방지 */
 }
 
-.login{
+.user_icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;      /* 반응형에서도 크기 유지 */
+  min-height: 32px;
+  background-color: var(--basic);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.login {
   background: var(--main);
   color: var(--white);
-  padding: 10px 18px;
+  padding: 6px 14px;
   border-radius: 100px;
   border: none;
   cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;  /* 줄바꿈 방지 */
 }
 
 .hamburger {
@@ -103,7 +114,7 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 15px 20px;
+    padding: 12px 16px;
   }
 
   .header ul {
@@ -114,17 +125,62 @@
     font-size: 18px;
   }
 
+  .logo_img {
+    width: 120px;
+  }
+
   .nav_menu {
     display: none;
   }
 
   .hamburger {
     display: flex;
-    margin-right: 10px;
+    margin-right: 6px;
   }
 
-  .nav_right{
-    display: flex;
-    align-items: center;
+  .nav_right {
+    gap: 6px;
+  }
+
+  .login {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+
+  .user_icon {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    font-size: 13px;
+  }
+}
+
+/* ========================= */
+/* 아주 작은 모바일 (<= 430px) */
+/* ========================= */
+
+@media (max-width: 430px) {
+  .header {
+    padding: 10px 14px;
+    margin: 10px 10px;
+  }
+
+  .logo_img {
+    width: 110px;
+  }
+
+  .login {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .user_icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  /* 넘침 방지 */
+  .nav_right {
+    gap: 4px;
   }
 }

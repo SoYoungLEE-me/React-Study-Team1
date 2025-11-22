@@ -1,10 +1,29 @@
 import React from 'react'
 import styles from './SummaryToday.module.css'
 import StatusNutrients from '../statusNutrients/StatusNutrients'
+import { useNavigate } from 'react-router-dom'
+import { motion } from "motion/react"
 
 const SummaryToday = ({data}) => {
+  const fadeUp = {
+    hidden: {opacity: 0, y: 40},
+    show: {opacity: 1, y: 0, transition: {duration: 0.6}}
+  };
+
+
+  const navigate = useNavigate();
+  console.log(data);
+
+  const goRecord = () => {
+    navigate('/record');
+  };
+
+  const goGoalSetting = () => {
+    navigate('/settings');
+  };
+
   return (
-    <div className={styles.summary_card}>
+    <motion.div className={styles.summary_card} initial='hidden' animate='show' variants={fadeUp}>
       <h2>오늘 요약</h2>
       <p className={styles.summary_desc}>
         오늘 날짜 기준으로 영양 점수, 부족/과다한 영양소, 추천 메뉴를 한눈에 확인해요.
@@ -32,10 +51,10 @@ const SummaryToday = ({data}) => {
       </div>
 
       <div className={styles.summary_buttons}>
-        <button className={styles.btn_green}>식단 기록하기</button>
-        <button className={styles.btn_outline}>오늘 기록 자세히 보기</button>
+        <button className={styles.btn_green} onClick={goRecord}>식단 기록하기</button>
+        <button className={styles.btn_outline} onClick={goGoalSetting}>목표 설정</button>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

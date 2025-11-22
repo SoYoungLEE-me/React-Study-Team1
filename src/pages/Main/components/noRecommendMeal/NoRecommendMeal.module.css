@@ -1,0 +1,47 @@
+.recommend_box{
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.recommend_box h2{
+  margin-bottom: 25px;
+}
+
+.today_rec_box {
+  background: var(--white);
+  gap: 40px;
+  border: 1px solid #e5e7eb;
+  border-radius: 30px;
+  padding: 30px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.recommend_list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.small_content {
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.content {
+    font-size: larger;
+    font-weight: bolder;
+    text-align: center;
+}
+
+/* ========================================================= */
+/*                     📱 모바일 반응형                      */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  .recommend_box {
+    padding: 20px;
+  }
+}
