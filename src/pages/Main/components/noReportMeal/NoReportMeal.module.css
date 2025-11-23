@@ -1,39 +1,82 @@
 /* ===== 기본 스타일 (PC 기준) ===== */
 
 .summary_card {
+  box-sizing: border-box;
   padding: 30px;
+
   margin-bottom: 40px;
 }
 
+.summary_card h2 {
+  font-size: var(--sec-title);
+  color: Var(--black);
+}
+
 .summary_desc {
-  color: #6b7280;
   margin-bottom: 25px;
 }
 
 .summary_content {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--borderR30);
+
+  padding: 30px;
+  box-sizing: border-box;
+
   display: flex;
-  gap: 20px;
-  align-items: center;
-  border: 1px solid #e5e7eb;
-  border-radius: 30px;
-  padding: 30px 50px;
-  background-color: var(--white);
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .content {
-    font-size: larger;
-    font-weight: bolder;
-    text-align: center;
+  font-size: var(--sub-title);
+  font-weight: 500;
+  text-align: center;
+  color: var(--black);
 }
 
 .summary_button {
-    background-color: var(--main);
-    border: 0px;
-    width: 150px;
-    height: 40px;
-    color: var(--white);
-    border-radius: 30px;
-    font-weight: bolder;
-    cursor: pointer;
+  background: var(--main);
+  color: var(--white);
+  border: 1px solid transparent;
+
+  margin: 0 auto;
+
+  padding: 10px 20px;
+  border-radius: var(--borderR30);
+
+  font-size: 1rem;
+
+  display: inline-box;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.summary_button:hover {
+  background: var(--white);
+  border-color: var(--main);
+  color: var(--main);
+}
+
+/* ========================================================= */
+/*                     📱 모바일 반응형                      */
+/* ========================================================= */
+
+@media (max-width: 768px) {
+  .summary_card {
+    padding: 20px;
+
+    margin-bottom: 25px;
+  }
+
+  .summary_desc {
+    margin-bottom: 15px;
+  }
+
+  .summary_content {
+    padding: 20px;
+  }
 }

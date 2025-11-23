@@ -44,18 +44,10 @@ const Footer = () => {
             >
               <FaGithub />
             </a>
-            <a
-              href="https://www.instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
               <FaInstagram />
             </a>
-            <a
-              href="https://mail.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://mail.google.com" target="_blank" rel="noopener noreferrer">
               <MdOutlineEmail />
             </a>
           </div>

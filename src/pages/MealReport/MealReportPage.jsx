@@ -3,11 +3,13 @@ import styles from "./MealReport.module.css";
 import NutritionSummary from "./components/NutritionSummary/NutritionSummary";
 import AiReport from "./components/AiReport/AiReport";
 import { useNutritionStore } from "../../stores/useNutritionStore";
-import { useAiStore } from "../../stores/useAiStore";
+// import { useAiStore } from "../../stores/useAiStore";
+import { useMealStore } from "../../stores/useMealStore";
 
 const MealReportPage = () => {
   const { totalNutrition } = useNutritionStore();
-  const { report } = useAiStore();
+  // const { report } = useAiStore();
+  const { editType: mealType } = useMealStore();
 
   // totalNutrition이 아직 없으면 안내
   if (!totalNutrition) {
@@ -31,10 +33,10 @@ const MealReportPage = () => {
 
       <div className={styles.analysisContent}>
         {/* 섭취 영양 분석 */}
-        <NutritionSummary />
+        <NutritionSummary mealType={mealType} />
 
         {/* AI 평가 및 코멘트 */}
-        <AiReport data={report} />
+        <AiReport mealType={mealType} />
       </div>
     </div>
   );

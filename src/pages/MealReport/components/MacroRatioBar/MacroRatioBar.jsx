@@ -52,24 +52,15 @@ const MacroRatioBar = ({ carbs, protein, fat }) => {
       {/* 하단 범례 (Legend) */}
       <div className={styles.legend}>
         <div className={styles.legendItem}>
-          <span
-            className={styles.dot}
-            style={{ backgroundColor: "#ff9800" }}
-          ></span>
+          <span className={styles.dot} style={{ backgroundColor: "#ff9800" }}></span>
           <span>탄수 {Math.round(ratios.c)}%</span>
         </div>
         <div className={styles.legendItem}>
-          <span
-            className={styles.dot}
-            style={{ backgroundColor: "#4caf50" }}
-          ></span>
+          <span className={styles.dot} style={{ backgroundColor: "#4caf50" }}></span>
           <span>단백 {Math.round(ratios.p)}%</span>
         </div>
         <div className={styles.legendItem}>
-          <span
-            className={styles.dot}
-            style={{ backgroundColor: "#2196f3" }}
-          ></span>
+          <span className={styles.dot} style={{ backgroundColor: "#2196f3" }}></span>
           <span>지방 {Math.round(ratios.f)}%</span>
         </div>
       </div>

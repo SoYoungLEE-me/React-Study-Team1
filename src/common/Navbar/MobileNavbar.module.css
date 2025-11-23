@@ -2,7 +2,7 @@
 .backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
@@ -18,13 +18,17 @@
   position: fixed;
   top: 0;
   right: -999px; /* 처음엔 숨김 */
+  z-index: 20;
+
   width: 260px;
   height: 100%;
-  background: white;
+
+  background: var(--white);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+
   padding: 20px;
+  box-sizing: border-box;
   transition: 0.3s ease;
-  box-shadow: -2px 0 10px rgba(0,0,0,0.1);
-  z-index: 20;
 }
 
 .mobile_nav.open {
@@ -34,25 +38,39 @@
 .mobile_nav_header {
   display: flex;
   justify-content: flex-end;
+
   margin-bottom: 20px;
 }
 
 .close_btn {
-  font-size: 22px;
+  font-size: 1.222rem;
+  color: var(--black);
+
+  transition: all 0.3s ease;
   cursor: pointer;
+}
+.close_btn:hover {
+  color: var(--main);
+  transform: rotate(180deg);
 }
 
 .mobile_nav ul {
-  list-style: none;
-  padding: 0;
   display: flex;
   flex-direction: column;
+
   gap: 18px;
 }
 
 .mobile_nav li {
-  font-size: 16px;
-  cursor: pointer;
+  font-size: 1rem;
+
   padding: 6px 0;
-  color: #444;
+  box-sizing: border-box;
+
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.mobile_nav li:hover {
+  color: var(--main);
+  font-weight: 600;
 }

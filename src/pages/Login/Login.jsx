@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import styles from './Login.module.css'
+import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import { useUserStore } from "../../stores/useUserStore";
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-  const {setUser, login} = useUserStore();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const { setUser, login } = useUserStore();
   const [errors, setErrors] = useState({ id: "", password: "" });
 
   const loginUser = (e) => {
@@ -17,11 +17,11 @@ const Login = () => {
     let valid = true;
     const newErrors = { id: "", password: "" };
 
-    if(id === ''){
+    if (id === "") {
       newErrors.id = "아이디를 입력해주세요.";
       valid = false;
     }
-    if(password === ''){
+    if (password === "") {
       newErrors.password = "비밀번호를 입력해주세요.";
       valid = false;
     }
@@ -32,7 +32,7 @@ const Login = () => {
 
     login();
     setUser(id, password);
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -42,18 +42,25 @@ const Login = () => {
 
         <form onSubmit={loginUser} className={styles.login_form}>
           <div className={styles.input_group}>
-            <input className={`${styles.input_box} ${errors.id && styles.input_error}`} type="text" placeholder="아이디" value={id} onChange={(e) => setId(e.target.value)}/>
-            {errors.id && (
-              <div className={styles.error_message}>{errors.id}</div>
-            )}
+            <input
+              className={`${styles.input_box} ${errors.id && styles.input_error}`}
+              type="text"
+              placeholder="아이디"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+            />
+            {errors.id && <div className={styles.error_message}>{errors.id}</div>}
           </div>
 
           <div className={styles.input_group}>
             <input
-              className={`${styles.input_box} ${errors.password && styles.input_error}`} type="password" placeholder="비밀번호" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            {errors.password && (
-              <div className={styles.error_message}>{errors.password}</div>
-            )}
+              className={`${styles.input_box} ${errors.password && styles.input_error}`}
+              type="password"
+              placeholder="비밀번호"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.password && <div className={styles.error_message}>{errors.password}</div>}
           </div>
 
           <button className={styles.login_button} type="submit">
@@ -62,7 +69,9 @@ const Login = () => {
         </form>
 
         <div className={styles.bottom_links}>
-          <div className={styles.link} onClick={() => navigate("/join")}>회원가입</div>
+          <div className={styles.link} onClick={() => navigate("/join")}>
+            회원가입
+          </div>
           <div className={styles.link}>아이디 찾기</div>
           <div className={styles.link}>비밀번호 찾기</div>
         </div>

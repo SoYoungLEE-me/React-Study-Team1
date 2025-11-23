@@ -18,9 +18,7 @@ const NutritionSummary = () => {
   return (
     <div className={styles.card}>
       <h3>이번 식사에서 섭취한 영양소</h3>
-      <p className={styles.cardSubtitle}>
-        목표 섭취량 대비 달성률을 한눈에 확인해 보세요.
-      </p>
+      <p className={styles.cardSubtitle}>목표 섭취량 대비 달성률을 한눈에 확인해 보세요.</p>
 
       {/* 메인 영양소 */}
       <div className={styles.nutrientDetails}>
@@ -44,11 +42,7 @@ const NutritionSummary = () => {
       </div>
 
       <div className={styles.barSection}>
-        <MacroRatioBar
-          carbs={data.carbs}
-          protein={data.protein}
-          fat={data.fat}
-        />
+        <MacroRatioBar carbs={data.carbs} protein={data.protein} fat={data.fat} />
       </div>
     </div>
   );

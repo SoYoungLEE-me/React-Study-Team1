@@ -7,9 +7,9 @@
 }
 
 .labelGroup {
-  font-size: 14px;
+  font-size: 0.889rem;
   font-weight: 600;
-  color: #333;
+  color: var(--black);
   margin-bottom: 4px;
 }
 
@@ -18,8 +18,8 @@
   height: 24px;
   background-color: #eee;
   border-radius: 12px;
-  overflow: hidden; /* 자식 요소가 둥근 모서리 밖으로 나가지 않게 */
-  display: flex; /* 가로로 배치 */
+  overflow: hidden;
+  display: flex;
 }
 
 .segment {
@@ -30,7 +30,7 @@
 .legend {
   display: flex;
   justify-content: space-between;
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
   padding: 0 4px;
 }

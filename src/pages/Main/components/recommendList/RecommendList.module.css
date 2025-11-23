@@ -1,18 +1,27 @@
-.recommend_box{
+.recommend_box {
   padding: 30px;
   margin-bottom: 40px;
 }
 
-.recommend_box h2{
+.recommend_box h2 {
   margin-bottom: 25px;
+
+  font-size: var(--sec-title);
+  color: Var(--black);
 }
 
 .today_rec_box {
   background: var(--white);
   gap: 40px;
   border: 1px solid #e5e7eb;
-  border-radius: 30px;
-  padding: 30px 50px;
+  border-radius: var(--borderR30);
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.today_rec_box h3 {
+  font-size: var(--sub-title);
+  color: Var(--black);
 }
 
 .today_rec {
@@ -34,5 +43,20 @@
 @media (max-width: 768px) {
   .recommend_box {
     padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .recommend_box h2 {
+    margin-bottom: 15px;
+  }
+
+  .today_rec_box {
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .recommend_list {
+    margin-top: 15px;
+    gap: 15px;
   }
 }
