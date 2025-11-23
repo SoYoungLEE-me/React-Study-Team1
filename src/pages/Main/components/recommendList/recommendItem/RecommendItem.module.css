@@ -1,12 +1,14 @@
 .recommend_item h4 {
   margin: 0;
   font-size: 1rem;
-
   color: Var(--black);
 }
 
 .tags {
   margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .tags span {
@@ -17,6 +19,14 @@
   margin: 6px;
   font-size: 0.889rem;
   color: #475569;
+  white-space: nowrap;
+}
+
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .reviews span {
@@ -27,6 +37,8 @@
   margin: 6px;
   font-size: 0.889rem;
   color: #303945;
+  word-break: keep-all;
+  white-space: nowrap;
 }
 
 /* ========================================================= */
@@ -34,4 +46,9 @@
 /* ========================================================= */
 
 @media (max-width: 768px) {
+  .tags span,
+  .reviews span {
+    font-size: 0.82rem;
+    padding: 5px 8px;
+  }
 }
