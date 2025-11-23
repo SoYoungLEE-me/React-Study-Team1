@@ -17,7 +17,7 @@ const NoReportMeal = () => {
   const { setTodaySummary, setRecommendList } = useTodaySummary();
   const [meals, setMeals] = useState(getMealsByDate(getToday()));
   const [isLoading, setIsLoading] = useState(false);
-  const {savedGoal} = useUserGoal();
+  const { savedGoal } = useUserGoal();
 
   // 페이드업 효과
   const fadeUp = {
@@ -41,11 +41,13 @@ const NoReportMeal = () => {
 
   // 오늘 식단 ai 분석하기 핸들러
   const goTodaySummary = async () => {
-    if(Object.keys(savedGoal).length === 0){
-      alert('목표 설정을 먼저 해주세요!');
-      navigate('/settings');
+    if (Object.keys(savedGoal).length === 0) {
+      alert("목표 설정을 먼저 해주세요!");
+      navigate("/settings");
       return false;
     }
+
+    setIsLoading(true);
 
     await calculateDailyTotal(selectedDate);
 
@@ -85,8 +87,7 @@ const NoReportMeal = () => {
           </div>
           <div>
             <button className={styles.summary_button} onClick={goTodaySummary}>
-              오늘 요약 보러가기
-              {isLoading && "요약 하는중..."}
+              {isLoading ? "요약 하는중..." : "오늘 요약 보러가기"}
             </button>
           </div>
         </div>
