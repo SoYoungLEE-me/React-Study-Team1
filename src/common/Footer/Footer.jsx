@@ -33,7 +33,7 @@ const Footer = () => {
 
         <div className={styles.footerBottom}>
           <div className={styles.copyright}>
-            <strong className={styles.logo}> Balance Eat</strong>
+            <strong className={styles.logo}>Balance Eat</strong>
             <p>© {currentYear} Balance Eat. All rights reserved.</p>
           </div>
           <div className={styles.socialLinks}>

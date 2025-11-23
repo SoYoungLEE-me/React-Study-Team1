@@ -59,7 +59,6 @@ export const useMealStore = create(
       partialize: (state) => ({
         meals: state.meals,
       }),
-      // selectedDate나 editType은 저장할 필요 없음 (UI 상태이기 때문에)
     }
   )
 );
