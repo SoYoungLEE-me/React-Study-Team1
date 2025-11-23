@@ -33,8 +33,8 @@ const MobileNavbar = ({ open, onClose }) => {
 
         <ul>
           <li onClick={goHome}>홈</li>
-          <li onClick={onClose}>식단 입력</li>
-          <li onClick={onClose}>목표 설정</li>
+          <li onClick={goRecord}>식단 입력</li>
+          <li onClick={goSetting}>목표 설정</li>
         </ul>
       </nav>
     </div>
