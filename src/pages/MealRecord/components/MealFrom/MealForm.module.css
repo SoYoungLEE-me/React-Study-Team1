@@ -227,4 +227,20 @@
 @media all and (max-width: 1024px) {
 }
 @media all and (max-width: 768px) {
+  .add_box .add_wrap {
+    flex-direction: column;
+  }
+  .add_box .add_wrap div,
+  .add_box .add_wrap .add_btn {
+    width: 100%;
+  }
+  .btn_wrap button {
+    max-width: 100%;
+    width: calc((100% - 10px) / 2);
+  }
+  .btn_wrap button:last-of-type {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 0;
+  }
 }
