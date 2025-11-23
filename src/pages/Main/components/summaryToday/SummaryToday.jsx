@@ -44,12 +44,12 @@ const SummaryToday = () => {
   };
 
   const retry = async () => {
-    if(Object.keys(savedGoal).length === 0){
-      alert('목표 설정을 먼저 해주세요!');
-      navigate('/settings');
+    if (Object.keys(savedGoal).length === 0) {
+      alert("목표 설정을 먼저 해주세요!");
+      navigate("/settings");
       return false;
     }
-
+    setIsLoading(true);
     if (count <= 0 || isLoading) return;
 
     const ai = await getTodayMealAiReport(totalNutrition);
