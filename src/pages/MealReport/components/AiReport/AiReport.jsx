@@ -102,9 +102,9 @@ const AiReport = ({ mealType }) => {
             {mealType === "snack" && "간식 피드백"}
           </h3>
 
-          <strong>영양 점수: {report.score} / 100</strong>
+          <h3 className={styles.nutri_score}>영양 점수: {report.score} / 100</h3>
 
-          <ul>
+          <ul className={styles.tagsSection}>
             {report.tags?.map((t, i) => (
               <li key={i}>{t}</li>
             ))}

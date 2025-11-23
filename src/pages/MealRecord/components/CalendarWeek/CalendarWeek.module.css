@@ -7,6 +7,7 @@
 .day_list > li,
 .date_list > li {
   width: calc((100% - 60px) / 7);
+  transition: all 0.3s ease;
   text-align: center;
 }
 .date_list > li {

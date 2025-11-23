@@ -1,6 +1,6 @@
 .card {
-  background-color: #ffffff;
-  border-radius: 12px;
+  background-color: var(--white);
+  border-radius: var(--borderR30);
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
@@ -13,28 +13,35 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  color: var(--black);
+  font-weight: 600;
 }
 
 .limitInfo {
-  font-size: 0.8rem;
-  color: #888;
+  font-size: 0.889rem;
+  color: Var(--basic);
   margin-bottom: 5px;
+}
+.limitInfo strong {
+  color: var(--black);
 }
 
 .analyzeButton {
   background-color: #6200ea; /* 포인트 컬러 (보라색 등) */
-  color: white;
+  color: var(--white);
   border: none;
   padding: 12px 24px;
-  border-radius: 25px;
-  font-weight: bold;
+  border-radius: var(--borderR30);
+  font-weight: 800;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s easse;
   font-size: 1rem;
 }
 
 .analyzeButton:hover {
-  background-color: #3700b3;
+  background: #3700b3;
+  color: var(--white);
 }
 /* AI 조언버튼 2번째부터 나타날때 */
 .analyzeButton.retry {
@@ -61,37 +68,33 @@
   margin-bottom: 1rem;
 }
 
-.scoreSection {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+.reportContent h3 {
+  font-size: var(--sub-title);
+  color: var(--black);
+  margin-bottom: 6px;
 }
-
 .tagsSection {
   margin-bottom: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
 }
-.tagsSection p {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.5rem;
-}
-.tagsSection ul {
-  list-style-type: "· ";
-  padding-left: 1.2rem;
-  margin: 0;
-}
+
 .tagsSection li {
-  margin-bottom: 0.25rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  border-radius: var(--borderR30);
+  background: var(--border);
+  color: var(--black);
 }
 
 .aiComment {
-  background-color: #e8f0fe;
-  border-radius: 8px;
+  background: #e8f0fe;
+  border-radius: 10px;
   padding: 1rem;
   font-size: 0.95rem;
-  line-height: 1.6;
-  color: #333;
 }
 /* 소진 문구 */
 .exhaustedNotice {

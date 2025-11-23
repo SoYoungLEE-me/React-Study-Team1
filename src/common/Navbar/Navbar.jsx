@@ -23,13 +23,13 @@ const Navbar = () => {
   const goLogout = () => {
     setShowProfileMenu(false);
     logout();
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   const goSetting = () => {
     setShowProfileMenu(false);
-    navigate('/settings');
-  }
+    navigate("/settings");
+  };
 
   useEffect(() => {
     if (Object.keys(user).length !== 0) {
@@ -40,12 +40,20 @@ const Navbar = () => {
   return (
     <>
       <div className={styles.header}>
-        <Link to={'/'} className={styles.logo}><img className={styles.logo_img} src={'logo3.png'}></img></Link>
-          <ul className={styles.nav_menu}>
-            <li><Link to={'/'}>홈</Link></li>
-            <li><Link to={'/record'}>식단 입력</Link></li>
-            <li><Link to={'/settings'}>목표 설정</Link></li>
-          </ul>
+        <Link to={"/"} className={styles.logo}>
+          <img className={styles.logo_img} src={"logo3.png"} alt="Balance-Eat"></img>
+        </Link>
+        <ul className={styles.nav_menu}>
+          <li>
+            <Link to={"/"}>홈</Link>
+          </li>
+          <li>
+            <Link to={"/record"}>식단 입력</Link>
+          </li>
+          <li>
+            <Link to={"/settings"}>목표 설정</Link>
+          </li>
+        </ul>
         <div className={styles.nav_right}>
           {authenticate ? (
             <div className={styles.user_icon} onClick={() => setShowProfileMenu((prev) => !prev)}>
@@ -66,15 +74,19 @@ const Navbar = () => {
             <span></span>
             <span></span>
           </div>
+
+          {authenticate && showProfileMenu && (
+            <div className={styles.profile_menu}>
+              <div className={styles.menu_item} onClick={goSetting}>
+                목표 설정
+              </div>
+              <div className={styles.menu_item} onClick={goLogout}>
+                로그아웃
+              </div>
+            </div>
+          )}
         </div>
       </div>
-
-      {authenticate && showProfileMenu && (
-        <div className={styles.profile_menu}>
-          <div className={styles.menu_item} onClick={goSetting}>목표 설정</div>
-          <div className={styles.menu_item} onClick={goLogout}>로그아웃</div>
-        </div>
-      )}
 
       <MobileNavbar open={open} onClose={() => setOpen(false)} />
     </>

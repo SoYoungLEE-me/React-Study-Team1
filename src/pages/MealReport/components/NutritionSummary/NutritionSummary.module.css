@@ -1,13 +1,14 @@
 .card {
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
-
-.cardSubtitle {
+.card h3 {
   font-size: var(--sub-title);
-  color: #888;
+  color: var(--black);
+}
+.cardSubtitle {
   margin-top: 0.4rem;
   margin-bottom: 1rem;
 }
@@ -18,7 +19,7 @@
 }
 
 .nutrientDetails strong {
-  color: #111;
+  color: var(--black);
   min-width: 80px;
   display: inline-block;
 }
@@ -28,9 +29,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: #999;
   margin-bottom: 20px;
+}
+.subDetails p {
+  font-size: 0.889rem;
 }
 
 .barSection {

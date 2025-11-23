@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import styles from "./SettingsPage.module.css";
 import { useUserGoal } from "../../stores/useUsergoalStore";
 
@@ -6,6 +6,8 @@ const SettingsPage = () => {
   const { editorGoal, updateEditor, saveGoal, resetGoal } = useUserGoal();
 
   const { gender, age, mode, calories, carbs, protein, fat } = editorGoal;
+
+  const [errors, setErrors] = useState({ age: "", calories: "", carbs: "", protein: "", fat: "" });
 
   // 권장 섭취량 계산
   const recommendation = useMemo(() => {
@@ -51,6 +53,38 @@ const SettingsPage = () => {
   };
 
   const handleSave = () => {
+    let valid = true;
+    const newErrors = { age: "", calories: '', carbs: '', protein: '', fat: '' };
+
+    if(age === ''){
+      newErrors.age = '나이를 입력해주세요.';
+      valid = false;
+    }
+
+    if(calories === 0){
+      newErrors.calories = '하루 목표 칼로리를 입력해주세요.'
+      valid = false;
+    }
+
+    if(carbs === 0){
+      newErrors.carbs = '탄수화물을 입력해주세요.'
+      valid = false;
+    }
+
+    if(protein === 0){
+      newErrors.protein = '단백질을 입력해주세요.'
+      valid = false;
+    }
+
+    if(fat === 0){
+      newErrors.fat = '지방을 입력해주세요.'
+      valid = false;
+    }
+
+    setErrors(newErrors);
+
+    if(!valid) return false;
+
     saveGoal();
     alert("저장되었습니다!");
   };
@@ -58,7 +92,7 @@ const SettingsPage = () => {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.header}>
-        <span className={styles.categoryLabel}>SETTINGS</span>
+        {/* <span className={styles.categoryLabel}>SETTINGS</span> */}
         <h2>나의 목표 설정</h2>
         <p>신체 정보와 목표에 맞춰 권장 섭취량을 확인하고 설정해보세요.</p>
       </div>
@@ -86,8 +120,9 @@ const SettingsPage = () => {
                 type="number"
                 value={age}
                 onChange={(e) => updateEditor("age", Number(e.target.value))}
-                className={styles.inputBox}
+                className={`${styles.inputBox} ${errors.age && styles.input_error}`}
               />
+              {errors.age && <div className={styles.error_message}>{errors.age}</div>}
             </div>
 
             <div className={styles.inputGroup}>
@@ -135,48 +170,55 @@ const SettingsPage = () => {
                 type="number"
                 value={calories}
                 onChange={(e) => updateEditor("calories", Number(e.target.value))}
-                className={styles.mainInput}
+                className={`${styles.mainInput} ${errors.calories && styles.input_error}`}
               />
               <span className={styles.unitText}>kcal</span>
             </div>
+            {errors.calories && <div className={styles.error_message}>{errors.calories}</div>}
           </div>
 
           {/* 3개 입력 */}
           <div className={styles.gridThree}>
             <div className={styles.miniInputGroup}>
               <label>탄수화물</label>
-              <div className={styles.inputWrapper}>
+              <div className={`${styles.inputWrapper}  ${errors.carbs && styles.input_error}`}>
                 <input
                   type="number"
                   value={carbs}
+                  className={styles.nutritionInput}
                   onChange={(e) => updateEditor("carbs", Number(e.target.value))}
                 />
                 <span>g</span>
               </div>
+                {errors.carbs && <div className={styles.error_message}>{errors.carbs}</div>}
             </div>
 
             <div className={styles.miniInputGroup}>
               <label>단백질</label>
-              <div className={styles.inputWrapper}>
+              <div className={`${styles.inputWrapper}  ${errors.protein && styles.input_error}`}>
                 <input
                   type="number"
                   value={protein}
+                  className={styles.nutritionInput}
                   onChange={(e) => updateEditor("protein", Number(e.target.value))}
                 />
                 <span>g</span>
               </div>
+              {errors.protein && <div className={styles.error_message}>{errors.protein}</div>}
             </div>
 
             <div className={styles.miniInputGroup}>
               <label>지방</label>
-              <div className={styles.inputWrapper}>
+              <div className={`${styles.inputWrapper}  ${errors.fat && styles.input_error}`}>
                 <input
                   type="number"
                   value={fat}
+                  className={styles.nutritionInput}
                   onChange={(e) => updateEditor("fat", Number(e.target.value))}
                 />
                 <span>g</span>
               </div>
+              {errors.fat && <div className={styles.error_message}>{errors.fat}</div>}
             </div>
           </div>
         </section>

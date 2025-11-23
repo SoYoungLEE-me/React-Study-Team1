@@ -1,4 +1,4 @@
-import "./App.css";
+import "./index.css";
 import { Routes, Route } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
 import MainPage from "./pages/Main/MainPage";
@@ -11,18 +11,16 @@ import ScrollToTop from "./utils/ScrollToTop";
 import PrivateRoute from "./pages/Main/components/privateRoute/PrivateRoute";
 
 function App() {
-
-
   return (
     <div className="App">
       <ScrollToTop></ScrollToTop>
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<MainPage />} />
-          <Route path="/record" element={<PrivateRoute component={MealRecordPage}/>} />
-          <Route path="/report" element={<PrivateRoute component={MealReportPage}/>} />
+          <Route path="/record" element={<PrivateRoute component={MealRecordPage} />} />
+          <Route path="/report" element={<PrivateRoute component={MealReportPage} />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/settings" element={<PrivateRoute component={SettingsPage}/>} />
+          <Route path="/settings" element={<PrivateRoute component={SettingsPage} />} />
           <Route path="/join" element={<Join />} />
         </Route>
       </Routes>

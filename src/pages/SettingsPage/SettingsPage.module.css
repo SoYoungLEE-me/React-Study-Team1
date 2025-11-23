@@ -2,8 +2,6 @@
   width: 90%;
   max-width: 700px;
   margin: 3rem auto;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #333;
 }
 
 .header {
@@ -13,37 +11,33 @@
   font-size: 0.75rem;
   font-weight: 700;
   color: #adb5bd;
-  letter-spacing: 1px;
   display: block;
   margin-bottom: 0.5rem;
 }
 .header h2 {
-  font-size: 1.75rem;
+  font-size: var(--page-title);
   margin: 0 0 0.5rem 0;
-  color: #1a202c;
+  color: var(--black);
 }
 .header p {
-  color: #718096;
-  font-size: 0.95rem;
   margin: 0;
+  color: var(--basic);
 }
 
 .card {
-  background-color: #ffffff;
-  border-radius: 16px;
+  background-color: var(--white);
+  border-radius: var(--borderR30);
   padding: 2rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-  border: 1px solid #f1f3f5;
+  border: 1px solid var(--border);
 }
 
 .section h3 {
-  font-size: 1.1rem;
-  margin: 0 0 1rem 0;
-  color: #111;
+  font-size: var(--sub-title);
+  color: var(--black);
 }
 .sectionSubtitle {
-  font-size: 0.85rem;
-  color: #888;
+  font-size: 0.889rem;
   margin-bottom: 1rem;
 }
 
@@ -65,7 +59,7 @@
 .inputGroup label,
 .miniInputGroup label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.889rem;
   font-weight: 600;
   color: #495057;
   margin-bottom: 0.4rem;
@@ -76,19 +70,22 @@
   width: 100%;
   padding: 0.7rem;
   font-size: 0.95rem;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  background-color: #fff;
-  box-sizing: border-box; /* 패딩 포함 */
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--white);
+  box-sizing: border-box;
+}
+.selectBox:focus {
+  border: 1px solid var(--border);
 }
 
 .mainInput {
   width: 100%;
   padding: 0.8rem;
-  font-size: 1.2rem; /* 칼로리는 좀 더 크게 */
-  font-weight: bold;
-  border: 1px solid #ced4da;
-  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   color: #2196f3;
 }
 
@@ -109,10 +106,10 @@
 .miniInputGroup .inputWrapper {
   display: flex;
   align-items: center;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   padding: 0 10px;
-  background: #fff;
+  background: var(--white);
 }
 
 .inputWrapper input {
@@ -128,20 +125,20 @@
 }
 .inputWrapper span {
   color: #adb5bd;
-  font-size: 0.85rem;
+  font-size: 0.889rem;
 }
 
 /* 가이드 박스 스타일 */
 .guideBox {
-  background-color: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 12px;
+  background: var(--grayBg);
+  border: 1px solid transparent;
+  border-radius: 10px;
   padding: 1.2rem;
   margin: 1.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; /* 모바일 대응 */
+  flex-wrap: wrap;
   gap: 10px;
 }
 
@@ -160,24 +157,25 @@
 }
 
 .applyButton {
-  background-color: var(--blue);
-  color: white;
+  background: var(--blue);
+  color: var(--white);
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
 }
 .applyButton:hover {
-  background-color: #1976d2;
+  background: #1976d2;
+  color: var(--white);
 }
 
 /* 구분선 및 초기화  */
 .divider {
   border: 0;
-  border-top: 1px solid #f1f3f5;
+  border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
 
@@ -195,7 +193,7 @@
 }
 
 .resetButton {
-  background-color: transparent;
+  background: transparent;
   border: 1px solid var(--red);
   color: var(--red);
   padding: 0.6rem 1.2rem;
@@ -203,9 +201,12 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .resetButton:hover {
-  background-color: #fff5f5;
+  background: var(--red);
+  color: var(--white);
+  border: 1px solid var(--red);
 }
 
 /*저장 버튼*/
@@ -216,20 +217,38 @@
 }
 
 .saveButton {
-  background-color: var(--blue);
+  background: var(--blue);
   color: var(--white);
   padding: 0.8rem 3rem;
   border-radius: 10px;
-  border: none;
+  border: 1px solid transparent;
   font-size: 1rem;
   font-weight: 700;
-  cursor: pointer;
 
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .saveButton:hover {
-  filter: brightness(0.9);
+  background: var(--white);
+  color: var(--blue);
+  border-color: var(--blue);
+}
+
+/* validation */
+.input_error {
+  border: 1px solid #ff4e4e !important;
+  background-color: #fff6f6 !important;
+}
+
+.error_message {
+  font-size: 13px;
+  color: #ff4e4e;
+  margin-top: 4px;
+}
+
+.nutritionInput {
+  background-color: transparent;
 }
 
 @media (max-width: 500px) {

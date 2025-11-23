@@ -150,10 +150,13 @@ html {
   font-family: var(--kor);
   word-break: keep-all;
   background: var(--grayBg);
+
+  min-width: 320px;
 }
 * {
   font-family: var(--kor);
   word-break: keep-all;
+  box-sizing: border-box;
 }
 body {
   -webkit-text-size-adjust: none;
@@ -250,13 +253,14 @@ input::placeholder {
 .app-layout-wrapper {
   overflow: hidden;
 }
+
 /*******************************************************************************
     @media  ~980px               
 *******************************************************************************/
 @media all and (max-width: 1024px) {
   html,
   body {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -340,7 +344,7 @@ input::placeholder {
   } /* delete vertical-align,font:inherit; */
   body,
   html {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
   }
   select {

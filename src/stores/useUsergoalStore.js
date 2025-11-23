@@ -7,13 +7,7 @@ export const useUserGoal = create(
     (set) => ({
       // 저장되는 실제 데이터
       savedGoal: {
-        gender: "male",
-        age: "",
-        mode: "maintenance",
-        calories: 0,
-        carbs: 0,
-        protein: 0,
-        fat: 0,
+
       }, //gpt한테 넘기실 때 이거 쓰시면 됩니다!!
 
       // 수정 중인 데이터 (저장 전)
@@ -46,13 +40,7 @@ export const useUserGoal = create(
       resetGoal: () =>
         set({
           savedGoal: {
-            gender: "male",
-            age: "",
-            mode: "maintenance",
-            calories: 0,
-            carbs: 0,
-            protein: 0,
-            fat: 0,
+
           },
           editorGoal: {
             gender: "male",
